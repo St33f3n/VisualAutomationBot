@@ -1,3 +1,4 @@
+__name__=botlib
 
 from PIL import Image
 from pytesseract import *
@@ -75,11 +76,8 @@ def clickIfPicture(locat, target):
 
 
 
-while keyboard.is_pressed('q') != True:
-	clickIfPicture('wurfeln.png', 'wurfeln.png')
-	clickIfPicture('rauben.png','rauben.png')
-	clickIfPicture('gratis.png', 'gratis.png')
-	clickIfPicture('target.png', 'target.png')
-	clickIfPicture('attack.png', 'attack.png')
-	clickIfPicture('cancel.png', 'cancel.png')
-	clickIfPicture('einsammeln.png', 'einsammeln.png')
+
+	
+
+    
+	
