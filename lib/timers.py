@@ -7,6 +7,7 @@ class Timers():
         self.minimal_duration = mindur
         self.maximal_duration = maxdur
         self.lifetime = self.createLifetime()
+        
 
     def __str__(self):
         return f'Range from: {self.minimal_duration}-{self.maximal_duration}\nCurrent waitTime: {self.lifetime}'

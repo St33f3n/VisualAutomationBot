@@ -1,5 +1,5 @@
-from pytesseract import *
-from pyautogui import *
+import pytesseract
+import pyautogui
 
 pytesseract.tesseract_cmd = r"path totesseract"
 
