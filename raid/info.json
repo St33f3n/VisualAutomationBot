@@ -1,0 +1,122 @@
+{
+  "data": {
+    "money": 0
+  },
+  "pictures": [
+    {
+      "name": "artefakt.png",
+      "width": 306,
+      "height": 37
+    },
+    {
+      "name": "bastion.png",
+      "width": 54,
+      "height": 70
+    },
+    {
+      "name": "cancel.png",
+      "width": 60,
+      "height": 61
+    },
+    {
+      "name": "cancelHero.png",
+      "width": 78,
+      "height": 66
+    },
+    {
+      "name": "chapscip.png",
+      "width": 454,
+      "height": 66
+    },
+    {
+      "name": "DailyTimer.png",
+      "width": 88,
+      "height": 64
+    },
+    {
+      "name": "energie.png",
+      "width": 148,
+      "height": 43
+    },
+    {
+      "name": "Geld.png",
+      "width": 76,
+      "height": 45
+    },
+    {
+      "name": "kampagne 2.png",
+      "width": 96,
+      "height": 126
+    },
+    {
+      "name": "Kampagne 3.png",
+      "width": 117,
+      "height": 127
+    },
+    {
+      "name": "Kein Champion ausgew\u00e4hlt.png",
+      "width": 574,
+      "height": 40
+    },
+    {
+      "name": "Kp3.png",
+      "width": 73,
+      "height": 61
+    },
+    {
+      "name": "levelup.png",
+      "width": 256,
+      "height": 69
+    },
+    {
+      "name": "niederlage.png",
+      "width": 250,
+      "height": 48
+    },
+    {
+      "name": "replay.png",
+      "width": 73,
+      "height": 51
+    },
+    {
+      "name": "Schlacht.png",
+      "width": 177,
+      "height": 49
+    },
+    {
+      "name": "schlachtB.png",
+      "width": 148,
+      "height": 43
+    },
+    {
+      "name": "Sieg.png",
+      "width": 109,
+      "height": 43
+    },
+    {
+      "name": "Start.png",
+      "width": 109,
+      "height": 40
+    },
+    {
+      "name": "verbessern.png",
+      "width": 237,
+      "height": 31
+    },
+    {
+      "name": "weiter blitz.png",
+      "width": 106,
+      "height": 55
+    },
+    {
+      "name": "weiter.png",
+      "width": 139,
+      "height": 52
+    },
+    {
+      "name": "Zug.png",
+      "width": 52,
+      "height": 31
+    }
+  ]
+}

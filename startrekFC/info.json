@@ -1,0 +1,107 @@
+{
+  "data": {
+    "money": 0
+  },
+  "pictures": [
+    {
+      "name": "angriff.png",
+      "width": 166,
+      "height": 52
+    },
+    {
+      "name": "back.png",
+      "width": 91,
+      "height": 58
+    },
+    {
+      "name": "delivery.png",
+      "width": 130,
+      "height": 97
+    },
+    {
+      "name": "einsammeln.png",
+      "width": 351,
+      "height": 46
+    },
+    {
+      "name": "fighting.png",
+      "width": 108,
+      "height": 31
+    },
+    {
+      "name": "forschung.png",
+      "width": 412,
+      "height": 48
+    },
+    {
+      "name": "geschenke.png",
+      "width": 235,
+      "height": 49
+    },
+    {
+      "name": "gratis.png",
+      "width": 220,
+      "height": 43
+    },
+    {
+      "name": "huntmission.png",
+      "width": 99,
+      "height": 91
+    },
+    {
+      "name": "idleShip.png",
+      "width": 40,
+      "height": 31
+    },
+    {
+      "name": "imVorteil.png",
+      "width": 37,
+      "height": 40
+    },
+    {
+      "name": "los.png",
+      "width": 79,
+      "height": 34
+    },
+    {
+      "name": "missioncomplete.png",
+      "width": 61,
+      "height": 31
+    },
+    {
+      "name": "missionpoint.png",
+      "width": 72,
+      "height": 100
+    },
+    {
+      "name": "missions.png",
+      "width": 64,
+      "height": 61
+    },
+    {
+      "name": "nextConv.png",
+      "width": 115,
+      "height": 136
+    },
+    {
+      "name": "orten.png",
+      "width": 349,
+      "height": 48
+    },
+    {
+      "name": "targeted.png",
+      "width": 28,
+      "height": 39
+    },
+    {
+      "name": "traveling.png",
+      "width": 30,
+      "height": 28
+    },
+    {
+      "name": "\u00fcberspringen.png",
+      "width": 130,
+      "height": 42
+    }
+  ]
+}

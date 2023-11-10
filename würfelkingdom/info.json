@@ -1,0 +1,47 @@
+{
+  "data": {
+    "money": 0
+  },
+  "pictures": [
+    {
+      "name": "attack.png",
+      "width": 124,
+      "height": 98
+    },
+    {
+      "name": "cancel.png",
+      "width": 70,
+      "height": 55
+    },
+    {
+      "name": "einsammeln.png",
+      "width": 309,
+      "height": 88
+    },
+    {
+      "name": "gratis.png",
+      "width": 174,
+      "height": 108
+    },
+    {
+      "name": "rauben.png",
+      "width": 145,
+      "height": 178
+    },
+    {
+      "name": "shoot.png",
+      "width": 436,
+      "height": 537
+    },
+    {
+      "name": "target.png",
+      "width": 96,
+      "height": 97
+    },
+    {
+      "name": "wurfeln.png",
+      "width": 212,
+      "height": 275
+    }
+  ]
+}
