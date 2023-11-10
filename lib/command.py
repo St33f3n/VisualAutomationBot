@@ -23,7 +23,7 @@ class commander:
         print("Window at: " + winPos + " captured!")
         return winPos
 
-    def play():
+    def play(self):
         for move in self.actionList:
             move
 

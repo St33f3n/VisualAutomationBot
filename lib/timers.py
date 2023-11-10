@@ -2,14 +2,20 @@ from numpy import random as rand
 import time
 
 
-class timers():
-    def _init_(self, mindur, maxdur):
+class Timers():
+    def __init__(self, mindur, maxdur):
         self.minimal_duration = mindur
         self.maximal_duration = maxdur
         self.lifetime = self.createLifetime()
 
-    def createLifetime()
+    def __str__(self):
+        return f'Range from: {self.minimal_duration}-{self.maximal_duration}\nCurrent waitTime: {self.lifetime}'
+
+    def createLifetime(self):
         return rand.uniform(self.minimal_duration, self.maximal_duration)
 
-    def hPause()
+    def hPause(self):
         time.sleep(self.lifetime)
+
+
+
