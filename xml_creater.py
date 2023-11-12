@@ -13,16 +13,24 @@ for directory in directorys:
 
 
     data_section = {
-        "money" : 0,
+        "money" : {
+            'value' : 0, 
+            'position' : {
+                'x' : 0,
+                'y' : 0
+            }
+        },
+        
     }
 
     pictures_section = []
 
     for imge in os.listdir(directory):
-        if any(el in imge for el in ["png"]):
+        if any(el in imge for el in ["png", "PNG"]):
 
-            w, h = Image.open(f"{directory}/{imge}").size
-            pictures_section.append({'name' : imge, 'width' : w, 'height' : h})
+            img = Image.open(f"{directory}/{imge}")
+            w, h = img.size
+            pictures_section.append({'name' : imge, 'width' : w, 'height' : h, 'path': f'{directory}/{imge}'})
  
 
     full_data = {'data' : data_section, 'pictures' : pictures_section}

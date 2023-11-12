@@ -2,7 +2,7 @@ import pyautogui
 import keyboard
 import time
 import win32api, win32con
-class commander:
+
     def _init_(self):
         self.winID = wi.get_active_window().id
         self.pos = self.getCommandArea()
@@ -29,5 +29,3 @@ class commander:
     def simpleClick(self, x, y):
         if x in range(self.uL[0],self.uR[0]) and y in range(self.uL[1],self.dR[1]):
             pyautogui.leftClick(x,y)
-        
-
