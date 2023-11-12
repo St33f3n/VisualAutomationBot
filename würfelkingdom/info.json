@@ -1,47 +1,108 @@
 {
   "data": {
-    "money": 0
-  },
-  "pictures": [
-    {
-      "name": "attack.png",
-      "width": 124,
-      "height": 98
-    },
-    {
-      "name": "cancel.png",
-      "width": 70,
-      "height": 55
-    },
-    {
-      "name": "einsammeln.png",
-      "width": 309,
-      "height": 88
-    },
-    {
-      "name": "gratis.png",
-      "width": 174,
-      "height": 108
-    },
-    {
-      "name": "rauben.png",
-      "width": 145,
-      "height": 178
-    },
-    {
-      "name": "shoot.png",
-      "width": 436,
-      "height": 537
-    },
-    {
-      "name": "target.png",
-      "width": 96,
-      "height": 97
-    },
-    {
-      "name": "wurfeln.png",
-      "width": 212,
-      "height": 275
+    "money": {
+      "value": 0,
+      "size": {
+        "x": 0,
+        "y": 0
+      }
     }
-  ]
+  },
+  "pictures": {
+    "gast": {
+      "width": 229,
+      "height": 115,
+      "path": "w\u00fcrfelkingdom/gast.PNG"
+    },
+    "target": {
+      "width": 96,
+      "height": 97,
+      "path": "w\u00fcrfelkingdom/target.png"
+    },
+    "nachstesKongigreich": {
+      "width": 405,
+      "height": 147,
+      "path": "w\u00fcrfelkingdom/nachstesKongigreich.PNG"
+    },
+    "attack": {
+      "width": 124,
+      "height": 98,
+      "path": "w\u00fcrfelkingdom/attack.png"
+    },
+    "money": {
+      "width": 144,
+      "height": 133,
+      "path": "w\u00fcrfelkingdom/money.PNG"
+    },
+    "geldbaumenu": {
+      "width": 90,
+      "height": 86,
+      "path": "w\u00fcrfelkingdom/geldbaumenu.PNG"
+    },
+    "energieLeiste": {
+      "width": 579,
+      "height": 100,
+      "path": "w\u00fcrfelkingdom/energieLeiste.PNG"
+    },
+    "2x": {
+      "width": 88,
+      "height": 86,
+      "path": "w\u00fcrfelkingdom/2x.PNG"
+    },
+    "einsammeln": {
+      "width": 309,
+      "height": 88,
+      "path": "w\u00fcrfelkingdom/einsammeln.png"
+    },
+    "timetilwurfel": {
+      "width": 434,
+      "height": 77,
+      "path": "w\u00fcrfelkingdom/timetilwurfel.PNG"
+    },
+    "rauben": {
+      "width": 145,
+      "height": 178,
+      "path": "w\u00fcrfelkingdom/rauben.png"
+    },
+    "wurfeln": {
+      "width": 212,
+      "height": 275,
+      "path": "w\u00fcrfelkingdom/wurfeln.png"
+    },
+    "gift": {
+      "width": 222,
+      "height": 216,
+      "path": "w\u00fcrfelkingdom/gift.PNG"
+    },
+    "gratis": {
+      "width": 174,
+      "height": 108,
+      "path": "w\u00fcrfelkingdom/gratis.png"
+    },
+    "1x": {
+      "width": 81,
+      "height": 91,
+      "path": "w\u00fcrfelkingdom/1x.PNG"
+    },
+    "clickandhold": {
+      "width": 317,
+      "height": 302,
+      "path": "w\u00fcrfelkingdom/clickandhold.PNG"
+    },
+    "shoot": {
+      "width": 436,
+      "height": 537,
+      "path": "w\u00fcrfelkingdom/shoot.png"
+    },
+    "cancel": {
+      "width": 70,
+      "height": 55,
+      "path": "w\u00fcrfelkingdom/cancel.png"
+    },
+    "baumenu": {
+      "width": 171,
+      "height": 162,
+      "path": "w\u00fcrfelkingdom/baumenu.PNG"
+    }
+  }
 }
