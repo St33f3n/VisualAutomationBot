@@ -1,9 +1,9 @@
-import random
+import random , queue
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
-from bot import picToCoordinates
+from lib.oldBot import picToCoordinates
 from timers import Timers
-import pytesseract
+import ocr ,Json_Handler
 
 
 class Gamer():
@@ -16,8 +16,8 @@ class Gamer():
             self.dL = (self.pos.get("x"), self.pos.get("y") + self.pos.get("height")) 
             self.dR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y") + self.pos.get("height")) 
         self.timer = {}
-        self.actionList = []
-        self.jsonData = {}
+        self.actionList = queue.SimpleQueue()
+        json_handler = Json_Handler(name)
 
     def addTimer(self, key ,timer):
         self.timer.update({key:timer})
@@ -65,8 +65,9 @@ class Gamer():
 
 
     def play(self):
-        for move in self.actionList:
-            move
+        action = self.actionList.get()
+        action
+        return self.actionList.empty()
 
     def simpleClick(self, x, y):
         if x in range(self.uL[0],self.uR[0]) and y in range(self.uL[1],self.dR[1]):
@@ -86,7 +87,7 @@ class Gamer():
         """key1 = Ziel das erkannt werden soll\n
         key2 = Ziel auf das gedrückt wird"""
 
-        target1 = self.getPictureData(key1)
+        target1 = self.json_handler.getData(key1)
         if pyautogui.locateOnScreen(target1[2], grayscale=True, confidence=0.8) != None:
             self.clickOnPicture(key2)
         else:
@@ -112,12 +113,12 @@ class Gamer():
         location = pyautogui.locateOnScreen(path, grayscale=True, confidence=0.8)
 
         region = (location[0] + location[2], location[1], sizeX, location[3])
-
-        img_screenshot = cv2.cvtColor(pyautogui.screenshot(region=region), cv2.COLOR_BGR2GRAY)
-
-        data = pytesseract.image_to_string(img_screenshot, lang='eng',config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789/:.')
+        data = ocr.ocr(region)
 
         self.saveData(data, key)
 
 
+    def addAction(self, function):
+        self.actionList.put(function)
+    
 
