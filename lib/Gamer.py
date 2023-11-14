@@ -22,29 +22,6 @@ class Gamer():
     def addTimer(self, key ,timer):
         self.timer.update({key:timer})
 
-    def loadData(self):
-        with open(f'{self.name}/info.json', 'r') as f:
-            self.jsonData = json.load(f)
-
-    def saveData(self, key):
-        # TODO data is comming, need to be converted to json and saves back.
-        None
-
-    def getPictureData(self, key):
-        if key in self.jsonData['pictures']:
-            localData = self.jsonData['pictures'][key]
-            w = localData['width']
-            h = localData['height']
-            p = localData['path']
-            return (w, h, p)
-        
-    def getDataData(self, key):
-        if key in self.jsonData['data']:
-            localData = self.jsonData['data'][key]
-            v = localData['value']
-            sx = localData['size']['x']
-            sy = localData['size']['y']
-            return (v, sx, sy) 
 
     def getCommandArea(self):
         print("Select the upper left edge on wich you want to start the bot.\nPress c to capture the edge.")
@@ -64,7 +41,7 @@ class Gamer():
             return None
 
 
-    def play(self): ##TODO
+    def play(self): ## TODO
         action = self.playset
         action
         return self.actionList.empty()
@@ -102,14 +79,15 @@ class Gamer():
             return False
         
     def picToCoordinates(self, key):
-        width , height, path = self.getPictureData(key)
+        width , height, path = self.json_handler.getPictureData(key)
         location = pyautogui.locateOnScreen(path, grayscale=True, confidence=0.8)
         rndPoint = (random.randint(location[0],location[0]+width), random.randint(location[1], location[1]+height))
         return rndPoint
     
+    # TODO re-new 
     def locateRessources(self, key):
-        width , height, path = self.getPictureData(key)
-        value, sizeX, sizeY = self.getDataData(key)
+        width , height, path = self.json_handler.getPictureData(key)
+        value, sizeX, sizeY = self.json_handler.getRessourceData(key)
         location = pyautogui.locateOnScreen(path, grayscale=True, confidence=0.8)
 
         region = (location[0] + location[2], location[1], sizeX, location[3])
