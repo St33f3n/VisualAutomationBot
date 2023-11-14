@@ -1,7 +1,7 @@
 import queue
 from Gamer import Gamer
 from Json_Handler import Json_Handler
-
+from Playset import Playset
 class Commander():
     def __init__(self):
         self.gamers = {}
@@ -19,9 +19,7 @@ class Commander():
             x = current.play()
             self.checkTimers()
 
-    def buildPlayset(self):
-        playset = Json_Handler.getData('playset')
-
+    
     #"function": {
     #   "arg1": 229,
     #   "arg2": 115,

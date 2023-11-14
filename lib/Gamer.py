@@ -1,4 +1,4 @@
-import random , queue
+import random
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
 from lib.oldBot import picToCoordinates
@@ -16,7 +16,7 @@ class Gamer():
             self.dL = (self.pos.get("x"), self.pos.get("y") + self.pos.get("height")) 
             self.dR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y") + self.pos.get("height")) 
         self.timer = {}
-        self.actionList = queue.SimpleQueue()
+        self.playset = None
         json_handler = Json_Handler(name)
 
     def addTimer(self, key ,timer):
@@ -64,8 +64,8 @@ class Gamer():
             return None
 
 
-    def play(self):
-        action = self.actionList.get()
+    def play(self): ##TODO
+        action = self.playset
         action
         return self.actionList.empty()
 
@@ -118,7 +118,5 @@ class Gamer():
         self.saveData(data, key)
 
 
-    def addAction(self, function):
-        self.actionList.put(function)
     
 
