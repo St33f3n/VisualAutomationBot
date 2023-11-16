@@ -9,10 +9,11 @@ def create_ressourceData(name, value, x, y):
 def create_playsetData(name, arg1, arg2, argN):
     return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
 
-def create_imageData(name, img : Image):
+# TODO reag img path
+def create_imageData(name, img : Image, path):
     w, h = img.size
-    p = img.__path__
-    return (name, {'width': w, 'height' : h, 'path': p})
+    # p = img.filename
+    return (name, {'width': w, 'height' : h, 'path': path})
 
 class Json_Handler():
 
@@ -66,7 +67,7 @@ class Json_Handler():
 
         # Checks if a key is valid
         if key not in self.jsonData[option]:
-             raise ValueError(f'No {key} in jsonData[{option}]')
+            raise ValueError(f'No {key} in jsonData[{option}]')
         
         data = self.jsonData[option][key]
 
@@ -118,10 +119,10 @@ def start():
             
         }
         config = {}
-        playset = [{'name' : ...,
-                    'arg1' : ...,
-                    'arg2' : ...,
-                    'argN' : ...,
+        playset = [{'name' : "",
+                    'arg1' : "",
+                    'arg2' : "",
+                    'argN' : "",
                     }]
 
         pictures_section = {}
@@ -130,7 +131,7 @@ def start():
             if any(el in imge for el in ["png", "PNG"]):
 
                 img = Image.open(f"{directory}/{imge}")
-                img_dat = create_imageData(os.path.splitext(imge)[0], img)
+                img_dat = create_imageData(os.path.splitext(imge)[0], img, f"{directory}/{imge}")
                 # pictures_section[os.path.splitext(imge)[0]] = {'width' : w, 'height' : h, 'path': f'{directory}/{imge}'}
                 pictures_section[img_dat[0]] = img_dat[1]
 

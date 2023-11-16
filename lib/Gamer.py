@@ -1,13 +1,15 @@
+import queue
 import random
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
 from lib.oldBot import picToCoordinates
 from timers import Timers
 import ocr ,Json_Handler
+from Playset import Playset
 
 
 class Gamer():
-    def _init_(self, name):
+    def __init__(self, name):
         self.name = name
         self.pos = self.getCommandArea()
         if self.pos != None  :
@@ -16,10 +18,18 @@ class Gamer():
             self.dL = (self.pos.get("x"), self.pos.get("y") + self.pos.get("height")) 
             self.dR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y") + self.pos.get("height")) 
         self.timer = {}
-        self.playset = None
-        json_handler = Json_Handler(name)
+        self.json_handler = Json_Handler(name)
+        self.playset = Playset(self.json_handler, name)
 
-    def addTimer(self, key ,timer):
+    def __str__(self):
+        string = f'Game: {self.name}\nThe controlled Area is:\nupperLeft({self.ul}) | upperRight({self.uR})\nlowerLeft({self.uL}) | lowerRight({self.uR})\n'
+        string = f'{string}It has the timers:\n'
+        for e in self.timer.keys():
+            string = f'{string}{e} with {self.timer.get(e)}\n'
+        string = f'{string}{self.playset}'
+        return string
+        
+    def addTimer(self, key ,timer : Timers):
         self.timer.update({key:timer})
 
 
@@ -41,10 +51,13 @@ class Gamer():
             return None
 
 
-    def play(self): ## TODO
-        action = self.playset
-        action
-        return self.actionList.empty()
+    def play(self):
+        if self.playset.actions.empty():
+            self.playset.queuePlayset()
+            self.playset.go()
+        else:
+            self.playset.go()
+        
 
     def simpleClick(self, x, y):
         if x in range(self.uL[0],self.uR[0]) and y in range(self.uL[1],self.dR[1]):
@@ -64,8 +77,8 @@ class Gamer():
         """key1 = Ziel das erkannt werden soll\n
         key2 = Ziel auf das gedrückt wird"""
 
-        target1 = self.json_handler.getData(key1)
-        if pyautogui.locateOnScreen(target1[2], grayscale=True, confidence=0.8) != None:
+        _, _, img = self.json_handler.getPictureData(key1)
+        if pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8) != None:
             self.clickOnPicture(key2)
         else:
             print("Picture not found!\nMaybe the sequenze is messed up?")
@@ -79,22 +92,23 @@ class Gamer():
             return False
         
     def picToCoordinates(self, key):
-        width , height, path = self.json_handler.getPictureData(key)
-        location = pyautogui.locateOnScreen(path, grayscale=True, confidence=0.8)
+        width , height, img = self.json_handler.getPictureData(key)
+        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8)
         rndPoint = (random.randint(location[0],location[0]+width), random.randint(location[1], location[1]+height))
         return rndPoint
     
     # TODO re-new 
     def locateRessources(self, key):
-        width , height, path = self.json_handler.getPictureData(key)
-        value, sizeX, sizeY = self.json_handler.getRessourceData(key)
-        location = pyautogui.locateOnScreen(path, grayscale=True, confidence=0.8)
+        width , height, img = self.json_handler.getPictureData(key)
+        _, sizeX, sizeY = self.json_handler.getRessourceData(key)
+        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8)
 
         region = (location[0] + location[2], location[1], sizeX, location[3])
-        data = ocr.ocr(region)
+        value = ocr.ocr(region)
+        
+        self.json_handler.update("ressource" ,self.json_handler.create_ressourceData(key, value, sizeX, sizeY))
 
-        self.saveData(data, key)
-
-
+    def wait(self):
+        self.timer.get('stop').hPause()
     
 
