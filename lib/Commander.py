@@ -1,8 +1,8 @@
 import queue
-from Gamer import Gamer
-from Json_Handler import Json_Handler
-from Playset import Playset
-from timers import Timers
+from lib.Gamer import Gamer
+from lib.Json_Handler import Json_Handler
+from lib.Playset import Playset
+from lib.timers import Timers
 
 class Commander():
     def __init__(self):
@@ -21,17 +21,19 @@ class Commander():
 
     def addGame(self, gameName):
         newGame = Gamer(gameName)
-        self.gamers.update(newGame.name, newGame)
+        self.gamers.update({newGame.name:newGame})
 
     def queueGamer(self, key):
         self.gameQueue.put(self.gamers.get(key))
 
     def playGame(self):
         current = self.gameQueue.get()
-        while not x: 
+        while not current.play(): 
             x = current.play()
             self.checkTimers()
 
+    def checkTimers(self):
+        return 0
     
     #"function": {
     #   "arg1": 229,

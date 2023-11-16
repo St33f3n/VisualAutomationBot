@@ -2,10 +2,10 @@ import queue
 import random
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
-from lib.oldBot import picToCoordinates
-from timers import Timers
-import ocr ,Json_Handler
-from Playset import Playset
+from lib.timers import Timers
+from lib.ocr import ocr
+from lib.Json_Handler import Json_Handler 
+from lib.Playset import Playset
 
 
 class Gamer():
@@ -32,17 +32,26 @@ class Gamer():
     def addTimer(self, key ,timer : Timers):
         self.timer.update({key:timer})
 
+    def getName(self):
+        return self.name
 
     def getCommandArea(self):
         print("Select the upper left edge on wich you want to start the bot.\nPress c to capture the edge.")
-        while keyboard.is_pressed('c') is False:
-            time.sleep(0.1)
+        while True:
+            if keyboard.read_key() == 'c':
+                upperEdge = pyautogui.position()
+                break
+            
             print(".", " ")
-        upperEdge = pyautogui.position()
-        print("Select the lower right edge on wich you want to start the bot.\nPress c to capture the edge.")
-        while keyboard.is_pressed('c') is False:
-            time.sleep(0.1)
-        lowerEdge = pyautogui.position()
+
+        print("Select the lower right edge on wich you want to start the bot.\nPress e to capture the edge.")
+        time.sleep(1)
+        while True:
+            if keyboard.read_key() == 'e':
+                lowerEdge = pyautogui.position()
+                break
+            
+            print(".", " ")
         winPos = {"x" : upperEdge[0], "y" : upperEdge[1], "width" : lowerEdge[0]-upperEdge[0], "height": lowerEdge[1]-upperEdge[1]}
         print(f"Window at: {winPos} captured!")
         if lowerEdge != None and upperEdge != None:
@@ -84,7 +93,7 @@ class Gamer():
             print("Picture not found!\nMaybe the sequenze is messed up?")
     
     def clickOnPicture(self, key):
-        target = picToCoordinates(key)
+        target = self.picToCoordinates(key)
         if target != None:
             self.simpleClick(target[0],target[1])
             return True 

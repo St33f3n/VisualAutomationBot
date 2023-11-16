@@ -1,4 +1,4 @@
-from Json_Handler import Json_Handler
+from lib.Json_Handler import Json_Handler
 from queue import Queue
 class Playset():
     def __init__(self, jHandler, name):
@@ -27,7 +27,7 @@ class Playset():
             self.functionList.append(function)
 
 
-    def __buildEvalString(name, list):
+    def __buildEvalString(self, name, list):
         evaluationStr = f'{list[0]}('
         for e in list[1:]:
             evaluationStr = evaluationStr + e
@@ -40,11 +40,13 @@ class Playset():
 
     def queuePlayset(self):
         for e in self.functionList:
+            print(f'This is {e}', type(e), f'Name: {self.name}')
             self.actions.put(self.__buildEvalString(self.name, e))
 
     def go(self):
         while not self.actions.empty():
-            eval(self.actions.get())
+            self.actions.get()
+            # eval(self.actions.get()) 
         
         self.actions.task_done()    
         
