@@ -1,0 +1,21 @@
+{
+  "config": {},
+  "ressource": {
+    "money": {
+      "value": 0,
+      "position": {
+        "x": 150,
+        "y": 20
+      }
+    }
+  },
+  "playset": [
+    [
+      "locateRessources",
+      "\"money\""
+    ],
+    [
+      "locateRessources",
+      "\"energieBlitz\""
+    ]
+  ],

@@ -9,18 +9,24 @@ class Commander():
         self.gamers = {}
         self.gameQueue = queue.Queue(maxsize = 10)
         self.queueLength = self.gameQueue.qsize()
+
+    def __str__(self):
         
-    def generateTimer(self):
+        string = f'{self.gamers.get("würfelkingdom")}\n'
+
+        return string
+
+    def generateTimer(self, e):
         stop = Timers(1,3)
         key = Timers(0.5, 2)
         click = Timers(1, 2)
-        for e in self.gamers:
-            e.addTimer('stop', stop)
-            e.addTimer('key', key)
-            e.addTimer('click', click)
+        e.addTimer('stop', stop)
+        e.addTimer('key', key)
+        e.addTimer('click', click)
 
     def addGame(self, gameName):
         newGame = Gamer(gameName)
+        self.generateTimer(newGame)
         self.gamers.update({newGame.name:newGame})
 
     def queueGamer(self, key):
@@ -28,9 +34,13 @@ class Commander():
 
     def playGame(self):
         current = self.gameQueue.get()
-        while not current.play(): 
-            x = current.play()
-            self.checkTimers()
+        cQueue = current.getActions()
+        while not cQueue.empty():
+            currentTask = cQueue.get()
+            print(currentTask)
+            eval(currentTask) 
+        cQueue.task_done() 
+        self.checkTimers()
 
     def checkTimers(self):
         return 0

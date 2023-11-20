@@ -18,6 +18,11 @@
     }
   ],
   "pictures": {
+    "alleSchliesen": {
+      "width": 366,
+      "height": 55,
+      "path": "Bluestacks/alleSchliesen.PNG"
+    },
     "DiceDream": {
       "width": 196,
       "height": 193,
@@ -28,25 +33,20 @@
       "height": 51,
       "path": "Bluestacks/Home.PNG"
     },
-    "releaseRam": {
-      "width": 47,
-      "height": 41,
-      "path": "Bluestacks/releaseRam.PNG"
-    },
     "homebutton": {
       "width": 48,
       "height": 39,
       "path": "Bluestacks/homebutton.PNG"
     },
-    "alleSchliesen": {
-      "width": 366,
-      "height": 55,
-      "path": "Bluestacks/alleSchliesen.PNG"
-    },
     "Leiste": {
       "width": 756,
       "height": 45,
       "path": "Bluestacks/Leiste.PNG"
+    },
+    "releaseRam": {
+      "width": 47,
+      "height": 41,
+      "path": "Bluestacks/releaseRam.PNG"
     }
   }
 }

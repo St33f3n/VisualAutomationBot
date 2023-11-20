@@ -30,8 +30,12 @@ class Playset():
     def __buildEvalString(self, name, list):
         evaluationStr = f'{list[0]}('
         for e in list[1:]:
-            evaluationStr = evaluationStr + e
-        evaluationStr = f'{name}.{evaluationStr})'
+            if e is not list[-1]:
+                evaluationStr = evaluationStr + e + ", "
+            else:
+                evaluationStr = evaluationStr + e
+                
+        evaluationStr = f'self.gamers.get("{name}").{evaluationStr})'
         return evaluationStr
 
     def actOnIdx(self, idx):
@@ -43,10 +47,13 @@ class Playset():
             print(f'This is {e}', type(e), f'Name: {self.name}')
             self.actions.put(self.__buildEvalString(self.name, e))
 
-    def go(self):
-        while not self.actions.empty():
-            self.actions.get()
-            # eval(self.actions.get()) 
+    def getQueue(self):
+        return self.actions
+
+    # def go(self):
+    #     while not self.actions.empty():
+           
+    #         eval(self.actions.get()) 
         
-        self.actions.task_done()    
+    #     self.actions.task_done()    
         

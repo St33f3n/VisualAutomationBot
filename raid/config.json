@@ -23,30 +23,55 @@
       "height": 37,
       "path": "raid/artefakt.png"
     },
-    "verbessern": {
-      "width": 237,
-      "height": 31,
-      "path": "raid/verbessern.png"
+    "bastion": {
+      "width": 54,
+      "height": 70,
+      "path": "raid/bastion.png"
     },
-    "weiter blitz": {
-      "width": 106,
-      "height": 55,
-      "path": "raid/weiter blitz.png"
+    "cancel": {
+      "width": 60,
+      "height": 61,
+      "path": "raid/cancel.png"
     },
-    "Zug": {
-      "width": 52,
-      "height": 31,
-      "path": "raid/Zug.png"
+    "cancelHero": {
+      "width": 78,
+      "height": 66,
+      "path": "raid/cancelHero.png"
+    },
+    "chapscip": {
+      "width": 454,
+      "height": 66,
+      "path": "raid/chapscip.png"
+    },
+    "DailyTimer": {
+      "width": 88,
+      "height": 64,
+      "path": "raid/DailyTimer.png"
+    },
+    "energie": {
+      "width": 148,
+      "height": 43,
+      "path": "raid/energie.png"
+    },
+    "Geld": {
+      "width": 76,
+      "height": 45,
+      "path": "raid/Geld.png"
+    },
+    "kampagne 2": {
+      "width": 96,
+      "height": 126,
+      "path": "raid/kampagne 2.png"
     },
     "Kampagne 3": {
       "width": 117,
       "height": 127,
       "path": "raid/Kampagne 3.png"
     },
-    "Start": {
-      "width": 109,
+    "Kein Champion ausgew\u00e4hlt": {
+      "width": 574,
       "height": 40,
-      "path": "raid/Start.png"
+      "path": "raid/Kein Champion ausgew\u00e4hlt.png"
     },
     "Kp3": {
       "width": 73,
@@ -58,80 +83,55 @@
       "height": 69,
       "path": "raid/levelup.png"
     },
-    "schlachtB": {
-      "width": 148,
-      "height": 43,
-      "path": "raid/schlachtB.png"
+    "niederlage": {
+      "width": 250,
+      "height": 48,
+      "path": "raid/niederlage.png"
     },
     "replay": {
       "width": 73,
       "height": 51,
       "path": "raid/replay.png"
     },
-    "DailyTimer": {
-      "width": 88,
-      "height": 64,
-      "path": "raid/DailyTimer.png"
+    "Schlacht": {
+      "width": 177,
+      "height": 49,
+      "path": "raid/Schlacht.png"
     },
-    "niederlage": {
-      "width": 250,
-      "height": 48,
-      "path": "raid/niederlage.png"
+    "schlachtB": {
+      "width": 148,
+      "height": 43,
+      "path": "raid/schlachtB.png"
     },
     "Sieg": {
       "width": 109,
       "height": 43,
       "path": "raid/Sieg.png"
     },
-    "energie": {
-      "width": 148,
-      "height": 43,
-      "path": "raid/energie.png"
+    "Start": {
+      "width": 109,
+      "height": 40,
+      "path": "raid/Start.png"
+    },
+    "verbessern": {
+      "width": 237,
+      "height": 31,
+      "path": "raid/verbessern.png"
+    },
+    "weiter blitz": {
+      "width": 106,
+      "height": 55,
+      "path": "raid/weiter blitz.png"
     },
     "weiter": {
       "width": 139,
       "height": 52,
       "path": "raid/weiter.png"
     },
-    "Schlacht": {
-      "width": 177,
-      "height": 49,
-      "path": "raid/Schlacht.png"
-    },
-    "kampagne 2": {
-      "width": 96,
-      "height": 126,
-      "path": "raid/kampagne 2.png"
-    },
-    "Kein Champion ausgew\u00e4hlt": {
-      "width": 574,
-      "height": 40,
-      "path": "raid/Kein Champion ausgew\u00e4hlt.png"
-    },
-    "chapscip": {
-      "width": 454,
-      "height": 66,
-      "path": "raid/chapscip.png"
-    },
-    "cancel": {
-      "width": 60,
-      "height": 61,
-      "path": "raid/cancel.png"
-    },
-    "bastion": {
-      "width": 54,
-      "height": 70,
-      "path": "raid/bastion.png"
-    },
-    "Geld": {
-      "width": 76,
-      "height": 45,
-      "path": "raid/Geld.png"
-    },
-    "cancelHero": {
-      "width": 78,
-      "height": 66,
-      "path": "raid/cancelHero.png"
+    "Zug": {
+      "width": 52,
+      "height": 31,
+      "path": "raid/Zug.png"
     }
   }
 }

@@ -1,5 +1,6 @@
 import queue
 import random
+from threading import local
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
 from lib.timers import Timers
@@ -22,7 +23,7 @@ class Gamer():
         self.playset = Playset(self.json_handler, name)
 
     def __str__(self):
-        string = f'Game: {self.name}\nThe controlled Area is:\nupperLeft({self.ul}) | upperRight({self.uR})\nlowerLeft({self.uL}) | lowerRight({self.uR})\n'
+        string = f'Game: {self.name}\nThe controlled Area is:\nupperLeft({self.uL}) | upperRight({self.uR})\nlowerLeft({self.uL}) | lowerRight({self.uR})\n'
         string = f'{string}It has the timers:\n'
         for e in self.timer.keys():
             string = f'{string}{e} with {self.timer.get(e)}\n'
@@ -60,26 +61,26 @@ class Gamer():
             return None
 
 
-    def play(self):
+    def getActions(self):
         if self.playset.actions.empty():
             self.playset.queuePlayset()
-            self.playset.go()
+            return self.playset.getQueue()
         else:
-            self.playset.go()
+            return self.playset.getQueue()
         
 
     def simpleClick(self, x, y):
         if x in range(self.uL[0],self.uR[0]) and y in range(self.uL[1],self.dR[1]):
             win32api.SetCursorPos((x,y))
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
-            self.timer.get("clicktimer").hpause()
+            self.timer.get("click").hPause()
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTUP,0,0)
         else:
             print("out of window")
 
     def keyPress(self, key):
         pyautogui.keyDown(key)
-        self.timer.get("keytimer").hpause()
+        self.timer.get("key").hPause()
         pyautogui.keyUp(key)
 
     def clickIfPicture(self, key1, key2):
@@ -109,13 +110,16 @@ class Gamer():
     # TODO re-new 
     def locateRessources(self, key):
         width , height, img = self.json_handler.getPictureData(key)
-        _, sizeX, sizeY = self.json_handler.getRessourceData(key)
-        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8)
-
-        region = (location[0] + location[2], location[1], sizeX, location[3])
-        value = ocr.ocr(region)
-        
-        self.json_handler.update("ressource" ,self.json_handler.create_ressourceData(key, value, sizeX, sizeY))
+        v, sizeX, sizeY = self.json_handler.getRessourceData(key)
+        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.75)
+        print("Loc: ", location)
+        region = (int(location[0] + location[2]), int(location[1] + sizeY), int(sizeX), int(location[3] - 2 * sizeY))
+        print( type(region), region)
+        value = ocr(region)
+        print("Value", value)
+        newInp = self.json_handler.create_ressourceData(key, value, sizeX, sizeY)
+        print(newInp)
+        self.json_handler.update("ressource" , newInp)
 
     def wait(self):
         self.timer.get('stop').hPause()

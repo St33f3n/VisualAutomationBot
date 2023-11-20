@@ -3,10 +3,10 @@ import os
 import json
 from PIL import Image
 
-def create_ressourceData(name, value, x, y):
-    return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
+def create_ressourceData( name, value, x, y):
+        return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
 
-def create_playsetData(name, arg1, arg2, argN):
+def create_playsetData( name, arg1, arg2, argN):
     return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
 
 # TODO reag img path
@@ -16,6 +16,18 @@ def create_imageData(name, img : Image, path):
     return (name, {'width': w, 'height' : h, 'path': path})
 
 class Json_Handler():
+
+    def create_ressourceData(self, name, value, x, y):
+        return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
+
+    def create_playsetData(self, name, arg1, arg2, argN):
+        return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
+
+    # TODO reag img path
+    def create_imageData(self, name, img : Image, path):
+        w, h = img.size
+        # p = img.filename
+        return (name, {'width': w, 'height' : h, 'path': path})
 
     def __init__(self, name) -> None:
         self.name = name
@@ -46,21 +58,25 @@ class Json_Handler():
 
     def update(self, option, data : Tuple):
         if option not in self.jsonData:
+            print(0)
             if data[0] in self.jsonData[option]:
                 raise ValueError(f'No {option} in jsonData')
             
+        print(data)
         self.jsonData[option][data[0]] = data[1]
+        self.saveData()
+
     
     # TODO playset update if needed
-    def update(self, option, data : dict):
-        None
+    # def update(self, option, data : Tuple):
+    #     None
 
     def remove(self):
         None
   
 
     def getData(self, option : str, key=None):
-
+        print(option, key)
         # return the complete playset
         if option == 'playset':
             return self.jsonData[option]
@@ -84,10 +100,10 @@ class Json_Handler():
         return (w, h, img)
     
     def getRessourceData(self, key):
-        data = self.getData('ressource')
+        data = self.getData('ressource', key=key)
         v = data['value']
-        sx = data['size']['x']
-        sy = data['size']['y']
+        sx = data['position']['x']
+        sy = data['position']['y']
         return (v, sx, sy) 
 
 
