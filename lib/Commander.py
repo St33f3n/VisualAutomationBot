@@ -1,8 +1,8 @@
 import queue
-from lib.Gamer import Gamer
-from lib.Json_Handler import Json_Handler
-from lib.Playset import Playset
-from lib.timers import Timers
+from .gamer import Gamer
+from .jsonHandler import JsonHandler
+from .playset import Playset
+from .timers import Timers
 
 class Commander():
     def __init__(self):

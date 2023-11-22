@@ -3,10 +3,10 @@ import random
 from threading import local
 import pyautogui, json, os, keyboard, time, cv2
 import win32api, win32con
-from lib.timers import Timers
-from lib.ocr import ocr
-from lib.Json_Handler import Json_Handler 
-from lib.Playset import Playset
+from .timers import Timers
+from .ocr import Ocr
+from .jsonHandler import JsonHandler 
+from .playset import Playset
 
 
 class Gamer():
@@ -19,7 +19,7 @@ class Gamer():
             self.dL = (self.pos.get("x"), self.pos.get("y") + self.pos.get("height")) 
             self.dR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y") + self.pos.get("height")) 
         self.timer = {}
-        self.json_handler = Json_Handler(name)
+        self.json_handler = JsonHandler(name)
         self.playset = Playset(self.json_handler, name)
 
     def __str__(self):
@@ -117,7 +117,7 @@ class Gamer():
         print( type(region), region)
         value = ocr(region)
         print("Value", value)
-        newInp = self.json_handler.create_ressourceData(key, value, sizeX, sizeY)
+        newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
         print(newInp)
         self.json_handler.update("ressource" , newInp)
 

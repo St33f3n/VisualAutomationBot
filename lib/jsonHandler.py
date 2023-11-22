@@ -3,31 +3,24 @@ import os
 import json
 from PIL import Image
 
-def create_ressourceData( name, value, x, y):
-        return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
 
-def create_playsetData( name, arg1, arg2, argN):
-    return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
+class JsonHandler():
 
-# TODO reag img path
-def create_imageData(name, img : Image, path):
-    w, h = img.size
-    # p = img.filename
-    return (name, {'width': w, 'height' : h, 'path': path})
+    # from lib.JsonHandler import JsonHandler 
+    # than JsonHandler.create_...
+    # no object need to be created
+    def create_ressourceData(name, value, x, y):
+            return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
 
-class Json_Handler():
-
-    def create_ressourceData(self, name, value, x, y):
-        return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
-
-    def create_playsetData(self, name, arg1, arg2, argN):
+    def create_playsetData(name, arg1, arg2, argN):
         return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
 
     # TODO reag img path
-    def create_imageData(self, name, img : Image, path):
+    def create_imageData(name, img : Image, path):
         w, h = img.size
         # p = img.filename
         return (name, {'width': w, 'height' : h, 'path': path})
+
 
     def __init__(self, name) -> None:
         self.name = name
@@ -147,7 +140,7 @@ def start():
             if any(el in imge for el in ["png", "PNG"]):
 
                 img = Image.open(f"{directory}/{imge}")
-                img_dat = create_imageData(os.path.splitext(imge)[0], img, f"{directory}/{imge}")
+                img_dat = JsonHandler.create_imageData(os.path.splitext(imge)[0], img, f"{directory}/{imge}")
                 # pictures_section[os.path.splitext(imge)[0]] = {'width' : w, 'height' : h, 'path': f'{directory}/{imge}'}
                 pictures_section[img_dat[0]] = img_dat[1]
 

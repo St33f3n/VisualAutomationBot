@@ -1,4 +1,4 @@
-from lib.Commander import Commander
+from lib.commander import Commander
 
 kom = Commander()
 

@@ -1,5 +1,7 @@
-from lib.Json_Handler import Json_Handler
+from .jsonHandler import JsonHandler
 from queue import Queue
+
+    
 class Playset():
     def __init__(self, jHandler, name):
         self.name = name

@@ -4,7 +4,7 @@ import pyautogui, cv2
 pytesseract.pytesseract.tesseract_cmd = r"C:\Program Files\Tesseract-OCR\tesseract.exe"
 
 
-def ocr(region):
+def Ocr(region):
     
     # img_screenshot = cv2.cvtColor(pyautogui.screenshot(region=region), cv2.COLOR_BGR2GRAY)
     img_screenshot = pyautogui.screenshot(region=region)
