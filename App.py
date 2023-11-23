@@ -136,9 +136,9 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def keyPress(self):
         current_text = self.textlist.text()
-        if self.timeLabel.text() != "":
-            self.textlist.setText(current_text + f"keyPress\n {self.timeLabel.text()}\n")
-            self.timeLabel.setText("")
+        if self.keyLabel.text() != "":
+            self.textlist.setText(current_text + f"keyPress\n {self.keyLabel.text()}\n")
+            self.keyLabel.setText("")
 
     def clickIfPicture(self):
         current_text = self.textlist.text()

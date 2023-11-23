@@ -174,6 +174,9 @@
       <height>711</height>
      </rect>
     </property>
+    <property name="horizontalScrollBarPolicy">
+     <enum>Qt::ScrollBarAlwaysOn</enum>
+    </property>
     <property name="sizeAdjustPolicy">
      <enum>QAbstractScrollArea::AdjustIgnored</enum>
     </property>
@@ -204,7 +207,7 @@
         <x>0</x>
         <y>0</y>
         <width>351</width>
-        <height>711</height>
+        <height>1171</height>
        </rect>
       </property>
       <property name="sizePolicy">
@@ -283,7 +286,7 @@
      <string>Y</string>
     </property>
    </widget>
-   <widget class="QLineEdit" name="timeLabel">
+   <widget class="QLineEdit" name="keyLabel">
     <property name="geometry">
      <rect>
       <x>630</x>
@@ -293,13 +296,13 @@
      </rect>
     </property>
     <property name="inputMask">
-     <string>9999</string>
+     <string/>
     </property>
     <property name="text">
      <string/>
     </property>
     <property name="placeholderText">
-     <string>time in s</string>
+     <string>Press Key</string>
     </property>
    </widget>
   </widget>

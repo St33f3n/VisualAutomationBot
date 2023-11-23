@@ -24,6 +24,10 @@
     [
       "locateRessources",
       "\"energieBlitz\""
+    ],
+    [
+      "locateRessource",
+      "\"shoot\""
     ]
   ],
   "pictures": {
