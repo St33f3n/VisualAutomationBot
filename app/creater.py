@@ -18,8 +18,8 @@ def load():
     if os.path.exists(current_file + "/config.json") == True:
         folder_name = os.path.basename(current_file)
         load_text.set(folder_name)
-        jHandler = JsonHandler(folder_name)
-        print(jHandler.getData("playset"))
+        jHandler = JsonHandler(folder_name).getData("playset")
+        print(jHandler)
     else:
         print("Not there")
 

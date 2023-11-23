@@ -10,12 +10,7 @@
     }
   },
   "playset": [
-    {
-      "name": "",
-      "arg1": "",
-      "arg2": "",
-      "argN": ""
-    }
+    []
   ],
   "pictures": {
     "artefakt": {

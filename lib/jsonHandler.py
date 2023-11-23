@@ -61,17 +61,20 @@ class JsonHandler():
 
     
     # TODO playset update if needed
-    # def update(self, option, data : Tuple):
-    #     None
+    def update(self, option, data : list):
+        self.jsonData[option] = data
+        self.saveData()
 
     def remove(self):
         None
   
 
     def getData(self, option : str, key=None):
-        print(option, key)
         # return the complete playset
         if option == 'playset':
+            return self.jsonData[option]
+        
+        if option == 'pictures' and key == 0:
             return self.jsonData[option]
 
         # Checks if a key is valid
