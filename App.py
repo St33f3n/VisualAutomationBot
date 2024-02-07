@@ -4,6 +4,7 @@ from PyQt5.QtCore import Qt, QMimeData, QObject
 from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent
 from app.hello import Ui_MainWindow  # Import Ui_MainWindow from the generated module
 import sys, os
+from lib.commander import Commander
 from lib.jsonHandler import JsonHandler 
 
 
@@ -35,6 +36,7 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
         super(ExampleApp, self).__init__(parent)
         self.setupUi(self)
         self.jHandler = None
+        self.com = Commander()
 
         # self.setAcceptDrops(True)
 
@@ -148,6 +150,25 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
         current_text = self.textlist.text()
         self.textlist.setText(current_text + "locateRessource\n")
   
+    def loadGame(self):
+        options = QFileDialog.Options()
+        current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
+        if os.path.exists(current_dir + "/config.json") == True:
+            folder_name = os.path.basename(current_dir)
+
+
+            self.com.addGame(folder_name)
+            self.com.queueGamer(folder_name)
+            print(self.com)
+
+    def selectTopLeft(self):
+        pass
+
+    def selectBottomRight(self):
+        pass
+
+    def start_stop(self):
+        self.com.playGame()
 
 
 def main():

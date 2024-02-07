@@ -113,13 +113,16 @@ class Gamer():
         v, sizeX, sizeY = self.json_handler.getRessourceData(key)
         location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.75)
         print("Loc: ", location)
-        region = (int(location[0] + location[2]), int(location[1] + sizeY), int(sizeX), int(location[3] - 2 * sizeY))
-        print( type(region), region)
-        value = Ocr(region)
-        print("Value", value)
-        newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
-        print(newInp)
-        self.json_handler.update("ressource" , newInp)
+        if location == None:
+            print("No location found")
+        else:
+            region = (int(location[0] + location[2]), int(location[1] + sizeY), int(sizeX), int(location[3] - 2 * sizeY))
+            print( type(region), region)
+            value = Ocr(region)
+            print("Value", value)
+            newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
+            print(newInp)
+            self.json_handler.update("ressource" , newInp)
 
     def wait(self):
         self.timer.get('stop').hPause()

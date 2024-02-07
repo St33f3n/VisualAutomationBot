@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -43,6 +43,58 @@
      <attribute name="title">
       <string>Play</string>
      </attribute>
+     <widget class="QPushButton" name="loadGame">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>40</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Load Game</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="topLeft">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>120</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Top Left</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="bottomRight">
+      <property name="geometry">
+       <rect>
+        <x>180</x>
+        <y>120</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Bottom Right</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="start_stop">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>190</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Start</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="tab">
      <attribute name="title">
@@ -560,6 +612,70 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>loadGame</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>loadGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>topLeft</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectTopLeft()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>82</x>
+     <y>202</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>start_stop</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>start_stop()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>265</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>bottomRight</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectBottomRight()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>openDir()</slot>
@@ -572,5 +688,9 @@
   <slot>add()</slot>
   <slot>deleteLast()</slot>
   <slot>openConfig()</slot>
+  <slot>loadGame()</slot>
+  <slot>selectBottomRight()</slot>
+  <slot>selectTopLeft()</slot>
+  <slot>start_stop()</slot>
  </slots>
 </ui>

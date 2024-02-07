@@ -26,8 +26,8 @@
       "\"energieBlitz\""
     ],
     [
-      "locateRessource",
-      "\"shoot\""
+      "clickOnPicture",
+      "\"clickandhold\""
     ]
   ],
   "pictures": {
