@@ -1,12 +1,15 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QFileDialog, QPushButton, QWidget
 from PyQt5.QtCore import Qt, QMimeData, QObject
-from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent
+from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent, QPixmap
+import pyautogui
 from app.hello import Ui_MainWindow  # Import Ui_MainWindow from the generated module
 import sys, os
 from lib.commander import Commander
+from lib.gamer import Gamer
 from lib.jsonHandler import JsonHandler 
-
+from PIL.ImageQt import ImageQt
+from PIL import Image
 
 class DragHandler(QObject):
     def __init__(self, widget):
@@ -37,6 +40,8 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.jHandler = None
         self.com = Commander()
+        self.create_folder_name = None
+        self.create_img = None
 
         # self.setAcceptDrops(True)
 
@@ -150,6 +155,9 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
         current_text = self.textlist.text()
         self.textlist.setText(current_text + "locateRessource\n")
   
+
+    # Game 
+
     def loadGame(self):
         options = QFileDialog.Options()
         current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
@@ -158,17 +166,66 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
             self.com.addGame(folder_name)
-            self.com.queueGamer(folder_name)
             print(self.com)
 
-    def selectTopLeft(self):
+    def selectArea(self):
         pass
 
-    def selectBottomRight(self):
+    def kill(self):
         pass
 
     def start_stop(self):
-        self.com.playGame()
+        if self.start_stopButton.isChecked():
+            self.start_stopButton.setText("STOP") 
+            self.start_stopButton.setStyleSheet("background-color : red")
+            # self.com.gameLoop(True)
+        else:
+            self.start_stopButton.setText("Start")
+            self.start_stopButton.setStyleSheet("background-color : lightgrey")
+            # self.com.gameLoop(False)
+
+    # Create 
+            
+    def selectGame(self):
+        options = QFileDialog.Options()
+        current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
+        if os.path.exists(current_dir) == True:
+            self.create_folder_name = os.path.basename(current_dir)
+
+
+    def takePicture(self):
+
+        self.createSaveButton.setText("Save")
+
+        pos = Gamer.getCommandArea()
+        region = (pos["x"], pos["y"], pos["width"], pos["height"])
+        self.create_img = pyautogui.screenshot(region=region)
+
+        self.takePictureButton.setText("Take New Picture")
+
+        # Needs to be save, QPixmap cant handel raw picture
+        self.create_img.save("temp.png")
+
+        self.pictureWidget_2.setPixmap(QPixmap("temp.png").scaled(580,580,True))
+        os.remove("temp.png")
+
+
+    def createSave(self):
+        try:
+            if self.create_img != None :
+                text = self.fileNameTextBox.text()
+                if text.strip() != "":
+                    self.create_img.save(f"{self.create_folder_name}/{text}.png")
+                    self.create_img = None
+                    self.pictureWidget_2.setPixmap(QPixmap())
+                    self.fileNameTextBox.setText("")
+                    self.createSaveButton.setText("Successfully Saved")
+        except:
+            self.createSaveButton.setText("Error While Saving")
+
+        
+
+
 
 
 def main():

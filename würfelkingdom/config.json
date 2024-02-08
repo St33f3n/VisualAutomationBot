@@ -2,14 +2,14 @@
   "config": {},
   "ressource": {
     "money": {
-      "value": 0,
+      "value": "61.259 /\n",
       "position": {
         "x": 350,
         "y": 20
       }
     },
     "energieBlitz": {
-      "value": 0,
+      "value": "150\n",
       "position": {
         "x": 61,
         "y": 20

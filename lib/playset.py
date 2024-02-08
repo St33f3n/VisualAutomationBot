@@ -1,12 +1,13 @@
 from .jsonHandler import JsonHandler
 from queue import Queue
-
+from .actionset import ActionSet
     
 class Playset():
     def __init__(self, jHandler, name):
         self.name = name
         self.rawPlayset = jHandler.getData('playset')
-    #    self.rawActionset = jHandler.getData('actionset')
+        self.rawActionsets = jHandler.getData('actionset')
+        self.actionSets = {}
         self.functionList = []
         self.convertRaw()
         self.actions = Queue()
@@ -53,6 +54,9 @@ class Playset():
     def getQueue(self):
         return self.actions
 
+    def initActionset(self, key):
+        actionset = ActionSet(key, self.rawActionsets.get(key))
+        self.actionLists.update(key, actionset)
     # def go(self):
     #     while not self.actions.empty():
            

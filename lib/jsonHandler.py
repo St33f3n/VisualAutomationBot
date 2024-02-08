@@ -1,4 +1,3 @@
-from ast import List, Tuple
 import os
 import json
 from PIL import Image
@@ -39,7 +38,7 @@ class JsonHandler():
             json.dump(self.jsonData, f, indent=2)
 
     # data is Tuple (name, directory)
-    def add(self, option, data : Tuple):
+    def add(self, option, data : tuple):
         if option not in self.jsonData:
             raise ValueError(f'No {option} in jsonData')
         self.jsonData[option][data[0]] = data[1]
@@ -49,7 +48,7 @@ class JsonHandler():
             raise ValueError(f'No {option} in jsonData')
         self.jsonData[option] # TODO need finish the playset dict add
 
-    def update(self, option, data : Tuple):
+    def update(self, option, data : tuple):
 
         ## TODO Makes no sens 
         # if option not in self.jsonData:
@@ -57,16 +56,12 @@ class JsonHandler():
         #     if data[0] in self.jsonData[option]:
         #         raise ValueError(f'No {option} in jsonData')
             
-        print(data)
-
         key, value = data
         
         if key not in self.jsonData[option]:
             raise ValueError(f'No {key} in {option}')
         
         self.jsonData[option][key]["value"] = value
-
-        print(self.jsonData)
         
         self.saveData()
 
@@ -83,6 +78,9 @@ class JsonHandler():
     def getData(self, option : str, key=None):
         # return the complete playset
         if option == 'playset':
+            return self.jsonData[option]
+        
+        if option == 'actionset':
             return self.jsonData[option]
         
         if option == 'pictures' and key == 0:

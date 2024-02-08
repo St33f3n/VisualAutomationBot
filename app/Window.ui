@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>1</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -56,30 +56,17 @@
        <string>Load Game</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="topLeftButton">
-      <property name="geometry">
-       <rect>
-        <x>30</x>
-        <y>120</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Top Left</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="bottomRightButton">
+     <widget class="QPushButton" name="killButton">
       <property name="geometry">
        <rect>
         <x>180</x>
-        <y>120</y>
+        <y>190</y>
         <width>141</width>
         <height>41</height>
        </rect>
       </property>
       <property name="text">
-       <string>Bottom Right</string>
+       <string>KILL</string>
       </property>
      </widget>
      <widget class="QPushButton" name="start_stopButton">
@@ -91,15 +78,97 @@
         <height>41</height>
        </rect>
       </property>
+      <property name="acceptDrops">
+       <bool>false</bool>
+      </property>
       <property name="text">
        <string>Start</string>
       </property>
+      <property name="checkable">
+       <bool>true</bool>
+      </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="tab">
+    <widget class="QWidget" name="create_tab">
      <attribute name="title">
       <string>Create</string>
      </attribute>
+     <widget class="QPushButton" name="takePictureButton">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>90</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Take Picture</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="selectGameButton">
+      <property name="geometry">
+       <rect>
+        <x>30</x>
+        <y>20</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select Game</string>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="createSaveButton">
+      <property name="geometry">
+       <rect>
+        <x>540</x>
+        <y>90</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Save</string>
+      </property>
+     </widget>
+     <widget class="QLabel" name="pictureWidget_2">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>40</x>
+        <y>180</y>
+        <width>582</width>
+        <height>582</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="fileNameTextBox">
+      <property name="geometry">
+       <rect>
+        <x>190</x>
+        <y>90</y>
+        <width>321</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>Picture Name</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="gameplay_tab">
      <property name="sizePolicy">
@@ -629,22 +698,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>topLeftButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>selectTopLeft()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>82</x>
-     <y>202</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>start_stopButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -661,14 +714,62 @@
    </hints>
   </connection>
   <connection>
-   <sender>bottomRightButton</sender>
+   <sender>killButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>selectBottomRight()</slot>
+   <slot>kill()</slot>
    <hints>
     <hint type="sourcelabel">
      <x>251</x>
      <y>195</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>takePictureButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>takePicture()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>165</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>selectGameButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectGame()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>101</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>createSaveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>165</y>
     </hint>
     <hint type="destinationlabel">
      <x>423</x>
@@ -689,8 +790,11 @@
   <slot>deleteLast()</slot>
   <slot>openConfig()</slot>
   <slot>loadGame()</slot>
-  <slot>selectBottomRight()</slot>
-  <slot>selectTopLeft()</slot>
+  <slot>selectArea()</slot>
+  <slot>kill()</slot>
   <slot>start_stop()</slot>
+  <slot>selectGame()</slot>
+  <slot>takePicture()</slot>
+  <slot>createSave()</slot>
  </slots>
 </ui>

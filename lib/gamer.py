@@ -7,12 +7,13 @@ from .timers import Timers
 from .ocr import Ocr
 from .jsonHandler import JsonHandler 
 from .playset import Playset
-
+from numpy import average
 
 class Gamer():
     def __init__(self, name):
         self.name = name
         self.pos = self.getCommandArea()
+        self.area = (self.pox.get("x"), self.pos.get("y"), self.pos.get("width"), self.pos.get("height"))
         if self.pos != None  :
             self.uL = (self.pos.get("x"), self.pos.get("y"))
             self.uR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y"))
@@ -36,7 +37,8 @@ class Gamer():
     def getName(self):
         return self.name
 
-    def getCommandArea(self):
+    @staticmethod
+    def getCommandArea():
         print("Select the upper left edge on wich you want to start the bot.\nPress w to capture the edge.")
         while True:
             if keyboard.read_key() == 'w':
@@ -88,7 +90,7 @@ class Gamer():
         key2 = Ziel auf das gedrückt wird"""
 
         _, _, img = self.json_handler.getPictureData(key1)
-        if pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8) != None:
+        if pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.8) != None:
             self.clickOnPicture(key2)
         else:
             print("Picture not found!\nMaybe the sequenze is messed up?")
@@ -103,7 +105,7 @@ class Gamer():
         
     def picToCoordinates(self, key):
         width , height, img = self.json_handler.getPictureData(key)
-        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8)
+        location = pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.8)
         if location == None:
             print(f"Picture {key} not found")
             return None
@@ -115,7 +117,7 @@ class Gamer():
         width , height, img = self.json_handler.getPictureData(key)
         v, sizeX, sizeY = self.json_handler.getRessourceData(key)        
         
-        location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.75)
+        location = pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.75)
         print("Loc: ", location)
         if location == None:
             print("No location found")
@@ -130,5 +132,37 @@ class Gamer():
 
     def wait(self):
         self.timer.get('stop').hPause()
-    
 
+    def conditionalAction(self, condition, action, confidence):
+        checklist = [None]*condition.length()
+        
+        for idx, e in enumerate(condition):
+            if type(e) is tuple:
+                checklist[idx] = self.compareRessources(e)
+            else:
+                currentPic = self.json_handler.getPictureData(e)
+                checklist[idx] = pyautogui.locateOnScreen(currentPic, region=self.area, grayscale=True, confidence=0.8) != None
+            if average(checklist) > confidence & self.playset.actionSets.get(action) != None:
+               self.playset.actionSets.get(action).runActionset()
+            elif average(checklist) > confidence & self.playset.actionSets.get(action) == None:
+                print("Searching for viable actionset")
+
+            else:    
+                print("To few hits in the condition")
+
+    def compareRessources(self, e):
+        ressource, comperator, value = e
+        currentRessources,  currentValue = self.json_handler.getRessourceData(ressource)
+        
+        match comperator:
+            case 0:
+                return currentValue>value
+            case 1:
+                return currentRessources<value
+            case 2:
+                return currentValue==value
+            case _:
+                print("Unknown Comperator")
+                return None
+        
+        
