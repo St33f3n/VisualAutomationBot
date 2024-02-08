@@ -1,4 +1,6 @@
 import queue
+
+from regex import E
 from .gamer import Gamer
 from .jsonHandler import JsonHandler
 from .playset import Playset
@@ -33,19 +35,26 @@ class Commander():
         self.gameQueue.put(self.gamers.get(key))
 
     def playGame(self):
-        current = self.gameQueue.get()
-        cQueue = current.getActions()
-        while not cQueue.empty():
-            currentTask = cQueue.get()
-            print(currentTask)
-            eval(currentTask) 
-        cQueue.task_done() 
-        self.checkTimers()
+        try:
+            current = self.gameQueue.get()
+            cQueue = current.getActions()
+            while not cQueue.empty():
+                currentTask = cQueue.get()
+                print(currentTask)
+                eval(currentTask) 
+            cQueue.task_done() 
+            self.checkTimers()
+        except ValueError as e:
+            print(e)
+
 
     def checkTimers(self):
         return 0
     
-    a
+    def getGamer(self):
+        pass
+
+    
     
     #"function": {
     #   "arg1": 229,

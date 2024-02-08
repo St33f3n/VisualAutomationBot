@@ -10,7 +10,7 @@ class JsonHandler():
     # than JsonHandler.create_...
     # no object need to be created
     def create_ressourceData(name, value, x, y):
-            return (name , {'value' : value, 'position' : {'x' : x,'y' : y}})
+            return {name : {'value' : value, 'position' : {'x' : x,'y' : y}}}
 
     def create_playsetData(name, arg1, arg2, argN):
         return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
@@ -50,20 +50,31 @@ class JsonHandler():
         self.jsonData[option] # TODO need finish the playset dict add
 
     def update(self, option, data : Tuple):
-        if option not in self.jsonData:
-            print(0)
-            if data[0] in self.jsonData[option]:
-                raise ValueError(f'No {option} in jsonData')
+
+        ## TODO Makes no sens 
+        # if option not in self.jsonData:
+        #     print(0)
+        #     if data[0] in self.jsonData[option]:
+        #         raise ValueError(f'No {option} in jsonData')
             
         print(data)
-        self.jsonData[option][data[0]] = data[1]
+
+        key, value = data
+        
+        if key not in self.jsonData[option]:
+            raise ValueError(f'No {key} in {option}')
+        
+        self.jsonData[option][key]["value"] = value
+
+        print(self.jsonData)
+        
         self.saveData()
 
     
     # TODO playset update if needed
-    def update(self, option, data : list):
-        self.jsonData[option] = data
-        self.saveData()
+    # def update(self, option, data : list):
+    #     self.jsonData[option] = data
+    #     self.saveData()
 
     def remove(self):
         None
@@ -122,10 +133,10 @@ def start():
 
         ressource_section = {
             "money" : {
-                'value' : 0, 
-                'position' : {
-                    'x' : 0,
-                    'y' : 0
+                "value" : 0, 
+                "position" : {
+                    "x" : 0,
+                    "y" : 0
                 }
             },
             

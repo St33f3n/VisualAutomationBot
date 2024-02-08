@@ -6,6 +6,7 @@ class Playset():
     def __init__(self, jHandler, name):
         self.name = name
         self.rawPlayset = jHandler.getData('playset')
+    #    self.rawActionset = jHandler.getData('actionset')
         self.functionList = []
         self.convertRaw()
         self.actions = Queue()

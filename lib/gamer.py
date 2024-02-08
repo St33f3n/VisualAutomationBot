@@ -37,18 +37,18 @@ class Gamer():
         return self.name
 
     def getCommandArea(self):
-        print("Select the upper left edge on wich you want to start the bot.\nPress c to capture the edge.")
+        print("Select the upper left edge on wich you want to start the bot.\nPress w to capture the edge.")
         while True:
-            if keyboard.read_key() == 'c':
+            if keyboard.read_key() == 'w':
                 upperEdge = pyautogui.position()
                 break
             
             print(".", " ")
 
-        print("Select the lower right edge on wich you want to start the bot.\nPress e to capture the edge.")
+        print("Select the lower right edge on wich you want to start the bot.\nPress w to capture the edge.")
         time.sleep(1)
         while True:
-            if keyboard.read_key() == 'e':
+            if keyboard.read_key() == 'w':
                 lowerEdge = pyautogui.position()
                 break
             
@@ -104,13 +104,17 @@ class Gamer():
     def picToCoordinates(self, key):
         width , height, img = self.json_handler.getPictureData(key)
         location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.8)
+        if location == None:
+            print(f"Picture {key} not found")
+            return None
         rndPoint = (random.randint(location[0],location[0]+width), random.randint(location[1], location[1]+height))
         return rndPoint
     
     # TODO use it 
     def locateRessources(self, key):
         width , height, img = self.json_handler.getPictureData(key)
-        v, sizeX, sizeY = self.json_handler.getRessourceData(key)
+        v, sizeX, sizeY = self.json_handler.getRessourceData(key)        
+        
         location = pyautogui.locateOnScreen(img, grayscale=True, confidence=0.75)
         print("Loc: ", location)
         if location == None:
@@ -120,9 +124,9 @@ class Gamer():
             print( type(region), region)
             value = Ocr(region)
             print("Value", value)
-            newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
-            print(newInp)
-            self.json_handler.update("ressource" , newInp)
+            # newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
+            # print(newInp)
+            self.json_handler.update("ressource" , (key, value))
 
     def wait(self):
         self.timer.get('stop').hPause()

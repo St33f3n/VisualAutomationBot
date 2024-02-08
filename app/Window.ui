@@ -43,7 +43,7 @@
      <attribute name="title">
       <string>Play</string>
      </attribute>
-     <widget class="QPushButton" name="loadGame">
+     <widget class="QPushButton" name="loadGameButton">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -56,7 +56,7 @@
        <string>Load Game</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="topLeft">
+     <widget class="QPushButton" name="topLeftButton">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -69,7 +69,7 @@
        <string>Top Left</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="bottomRight">
+     <widget class="QPushButton" name="bottomRightButton">
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -82,7 +82,7 @@
        <string>Bottom Right</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="start_stop">
+     <widget class="QPushButton" name="start_stopButton">
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -613,7 +613,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>loadGame</sender>
+   <sender>loadGameButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>loadGame()</slot>
@@ -629,7 +629,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>topLeft</sender>
+   <sender>topLeftButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>selectTopLeft()</slot>
@@ -645,7 +645,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>start_stop</sender>
+   <sender>start_stopButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>start_stop()</slot>
@@ -661,7 +661,7 @@
    </hints>
   </connection>
   <connection>
-   <sender>bottomRight</sender>
+   <sender>bottomRightButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
    <slot>selectBottomRight()</slot>
