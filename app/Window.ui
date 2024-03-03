@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -417,60 +417,6 @@
      <zorder>comboBox</zorder>
      <zorder>newSaveTextBox</zorder>
     </widget>
-    <widget class="QWidget" name="builder_tab">
-     <property name="accessibleName">
-      <string/>
-     </property>
-     <attribute name="title">
-      <string>Page</string>
-     </attribute>
-     <widget class="QLabel" name="textlist_2">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>10</y>
-        <width>361</width>
-        <height>781</height>
-       </rect>
-      </property>
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="mouseTracking">
-       <bool>false</bool>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="scaledContents">
-       <bool>false</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-      <property name="wordWrap">
-       <bool>true</bool>
-      </property>
-     </widget>
-     <widget class="QTreeWidget" name="treeWidget">
-      <property name="geometry">
-       <rect>
-        <x>420</x>
-        <y>150</y>
-        <width>256</width>
-        <height>192</height>
-       </rect>
-      </property>
-      <column>
-       <property name="text">
-        <string notr="true">1</string>
-       </property>
-      </column>
-     </widget>
-    </widget>
    </widget>
   </widget>
   <widget class="QMenuBar" name="menubar">
@@ -531,6 +477,22 @@
    </hints>
   </connection>
   <connection>
+   <sender>createSaveButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>createSave()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>611</x>
+     <y>165</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
    <sender>openDirButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -563,22 +525,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>loadGameButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>loadGame()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>101</x>
-     <y>115</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>start_stopButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -587,22 +533,6 @@
     <hint type="sourcelabel">
      <x>101</x>
      <y>265</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>killButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>kill()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>251</x>
-     <y>195</y>
     </hint>
     <hint type="destinationlabel">
      <x>423</x>
@@ -643,14 +573,30 @@
    </hints>
   </connection>
   <connection>
-   <sender>createSaveButton</sender>
+   <sender>loadGameButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
-   <slot>createSave()</slot>
+   <slot>loadGame()</slot>
    <hints>
     <hint type="sourcelabel">
-     <x>611</x>
-     <y>165</y>
+     <x>101</x>
+     <y>115</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>killButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>kill()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>251</x>
+     <y>195</y>
     </hint>
     <hint type="destinationlabel">
      <x>423</x>
@@ -675,22 +621,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>keyValueButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>keyPress()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>456</x>
-     <y>623</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>comboBox</sender>
    <signal>currentIndexChanged(int)</signal>
    <receiver>MainWindow</receiver>
@@ -699,6 +629,22 @@
     <hint type="sourcelabel">
      <x>146</x>
      <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>keyValueButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>keyPress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>456</x>
+     <y>623</y>
     </hint>
     <hint type="destinationlabel">
      <x>423</x>

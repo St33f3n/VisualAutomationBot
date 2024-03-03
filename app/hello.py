@@ -162,27 +162,6 @@ class Ui_MainWindow(object):
         self.comboBox.raise_()
         self.newSaveTextBox.raise_()
         self.tabWidget.addTab(self.gameplay_tab, "")
-        self.builder_tab = QtWidgets.QWidget()
-        self.builder_tab.setAccessibleName("")
-        self.builder_tab.setObjectName("builder_tab")
-        self.textlist_2 = QtWidgets.QLabel(self.builder_tab)
-        self.textlist_2.setGeometry(QtCore.QRect(10, 10, 361, 781))
-        sizePolicy = QtWidgets.QSizePolicy(QtWidgets.QSizePolicy.Expanding, QtWidgets.QSizePolicy.Preferred)
-        sizePolicy.setHorizontalStretch(0)
-        sizePolicy.setVerticalStretch(0)
-        sizePolicy.setHeightForWidth(self.textlist_2.sizePolicy().hasHeightForWidth())
-        self.textlist_2.setSizePolicy(sizePolicy)
-        self.textlist_2.setMouseTracking(False)
-        self.textlist_2.setText("")
-        self.textlist_2.setScaledContents(False)
-        self.textlist_2.setAlignment(QtCore.Qt.AlignLeading|QtCore.Qt.AlignLeft|QtCore.Qt.AlignTop)
-        self.textlist_2.setWordWrap(True)
-        self.textlist_2.setObjectName("textlist_2")
-        self.treeWidget = QtWidgets.QTreeWidget(self.builder_tab)
-        self.treeWidget.setGeometry(QtCore.QRect(420, 150, 256, 192))
-        self.treeWidget.setObjectName("treeWidget")
-        self.treeWidget.headerItem().setText(0, "1")
-        self.tabWidget.addTab(self.builder_tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
         self.menubar.setGeometry(QtCore.QRect(0, 0, 847, 26))
@@ -205,19 +184,19 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuSettings.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(2)
+        self.tabWidget.setCurrentIndex(0)
         self.actionOpen.triggered.connect(MainWindow.openDir) # type: ignore
+        self.createSaveButton.clicked.connect(MainWindow.createSave) # type: ignore
         self.openDirButton.clicked.connect(MainWindow.openDir) # type: ignore
         self.saveButton.clicked.connect(MainWindow.save) # type: ignore
-        self.loadGameButton.clicked.connect(MainWindow.loadGame) # type: ignore
         self.start_stopButton.clicked.connect(MainWindow.start_stop) # type: ignore
-        self.killButton.clicked.connect(MainWindow.kill) # type: ignore
         self.takePictureButton.clicked.connect(MainWindow.takePicture) # type: ignore
         self.selectGameButton.clicked.connect(MainWindow.selectGame) # type: ignore
-        self.createSaveButton.clicked.connect(MainWindow.createSave) # type: ignore
+        self.loadGameButton.clicked.connect(MainWindow.loadGame) # type: ignore
+        self.killButton.clicked.connect(MainWindow.kill) # type: ignore
         self.selectFrameSizeButton.clicked.connect(MainWindow.selectFrameSize) # type: ignore
-        self.keyValueButton.clicked.connect(MainWindow.keyPress) # type: ignore
         self.comboBox.currentIndexChanged['int'].connect(MainWindow.handleComboBoxSelection) # type: ignore
+        self.keyValueButton.clicked.connect(MainWindow.keyPress) # type: ignore
         QtCore.QMetaObject.connectSlotsByName(MainWindow)
 
     def retranslateUi(self, MainWindow):
@@ -239,7 +218,6 @@ class Ui_MainWindow(object):
         self.valueTextBox.setPlaceholderText(_translate("MainWindow", "Value or Name"))
         self.newSaveTextBox.setPlaceholderText(_translate("MainWindow", "Savename"))
         self.tabWidget.setTabText(self.tabWidget.indexOf(self.gameplay_tab), _translate("MainWindow", "Gameplay"))
-        self.tabWidget.setTabText(self.tabWidget.indexOf(self.builder_tab), _translate("MainWindow", "Page"))
         self.menuFile.setTitle(_translate("MainWindow", "File"))
         self.menuSettings.setTitle(_translate("MainWindow", "Settings"))
         self.actionOpen.setText(_translate("MainWindow", "Open"))
