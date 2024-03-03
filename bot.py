@@ -1,3 +1,0 @@
-import Gamer
-import timers
-

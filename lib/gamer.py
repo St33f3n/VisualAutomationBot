@@ -8,12 +8,12 @@ from .ocr import Ocr
 from .jsonHandler import JsonHandler 
 from .playset import Playset
 from numpy import average
-
+import math
 class Gamer():
     def __init__(self, name):
         self.name = name
         self.pos = self.getCommandArea()
-        self.area = (self.pox.get("x"), self.pos.get("y"), self.pos.get("width"), self.pos.get("height"))
+        self.area = (self.pos.get("x"), self.pos.get("y"), self.pos.get("width"), self.pos.get("height"))
         if self.pos != None  :
             self.uL = (self.pos.get("x"), self.pos.get("y"))
             self.uR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y"))
@@ -21,7 +21,7 @@ class Gamer():
             self.dR = (self.pos.get("x") + self.pos.get("width"), self.pos.get("y") + self.pos.get("height")) 
         self.timer = {}
         self.json_handler = JsonHandler(name)
-        self.playset = Playset(self.json_handler, name)
+        self.playset = Playset(self.json_handler, name, self)
 
     def __str__(self):
         string = f'Game: {self.name}\nThe controlled Area is:\nupperLeft({self.uL}) | upperRight({self.uR})\nlowerLeft({self.uL}) | lowerRight({self.uR})\n'
@@ -55,6 +55,8 @@ class Gamer():
                 break
             
             print(".", " ")
+
+            
         winPos = {"x" : upperEdge[0], "y" : upperEdge[1], "width" : lowerEdge[0]-upperEdge[0], "height": lowerEdge[1]-upperEdge[1]}
         print(f"Window at: {winPos} captured!")
         if lowerEdge != None and upperEdge != None:
@@ -80,6 +82,22 @@ class Gamer():
         else:
             print("out of window")
 
+    def dragMouse(self, start, end):
+        win32api.SetCursorPos(start)
+        pyautogui.dragTo(end.x, end.y, 1, pyautogui.easeOutQuad, button='left')
+
+    def dragPictureToPicture(self, key1, key2):
+        start = self.picToCoordinates(key1)
+        end = self.picToCoordinates(key2)
+        self.dragMouse(start, end)
+
+    def dragFromPicture(self, key, distance: int, direction:int):
+        target = self.picToCoordinates(key)
+        targetx, targety = target
+        angle = math.radians(direction)
+        goal = (targetx + round(distance*math.cos(angle)), targety + round(distance*math.sin(angle)))
+        self.dragMouse(target, goal)
+
     def keyPress(self, key):
         pyautogui.keyDown(key)
         self.timer.get("key").hPause()
@@ -91,17 +109,15 @@ class Gamer():
 
         _, _, img = self.json_handler.getPictureData(key1)
         if pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.8) != None:
-            self.clickOnPicture(key2)
+            target = self.picToCoordinates(key2)
+            if target != None:
+                self.simpleClick(target[0],target[1])
+                return True 
+            else:
+                return False
         else:
             print("Picture not found!\nMaybe the sequenze is messed up?")
     
-    def clickOnPicture(self, key):
-        target = self.picToCoordinates(key)
-        if target != None:
-            self.simpleClick(target[0],target[1])
-            return True 
-        else:
-            return False
         
     def picToCoordinates(self, key):
         width , height, img = self.json_handler.getPictureData(key)
@@ -112,7 +128,7 @@ class Gamer():
         rndPoint = (random.randint(location[0],location[0]+width), random.randint(location[1], location[1]+height))
         return rndPoint
     
-    # TODO use it 
+    # TODO regular automatic Checkup 
     def locateRessources(self, key):
         width , height, img = self.json_handler.getPictureData(key)
         v, sizeX, sizeY = self.json_handler.getRessourceData(key)        
@@ -142,15 +158,16 @@ class Gamer():
             else:
                 currentPic = self.json_handler.getPictureData(e)
                 checklist[idx] = pyautogui.locateOnScreen(currentPic, region=self.area, grayscale=True, confidence=0.8) != None
-            if average(checklist) > confidence & self.playset.actionSets.get(action) != None:
-               self.playset.actionSets.get(action).runActionset()
-            elif average(checklist) > confidence & self.playset.actionSets.get(action) == None:
-                print("Searching for viable actionset")
 
-            else:    
-                print("To few hits in the condition")
+        if average(checklist) > confidence & self.playset.actionSets.get(action) != None:
+            self.playset.actionSets.get(action).runActionset()
+        elif average(checklist) > confidence & self.playset.actionSets.get(action) == None:
+            print(f"No actionset found with name: {action}")
 
-    def compareRessources(self, e):
+        else:    
+            print("To few hits in the condition")
+
+    def compareRessources(self, e : tuple):
         ressource, comperator, value = e
         currentRessources,  currentValue = self.json_handler.getRessourceData(ressource)
         

@@ -1,0 +1,33 @@
+{
+    "config": {},
+    "playset": [],
+    "actionset": [],
+    "pictures": {
+        "FFFF": {
+            "width": 714,
+            "height": 799,
+            "path": "test/FFFF",
+            "windowSize": {
+                "width": 3839,
+                "height": 2159
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "FAA": {
+            "width": 243,
+            "height": 806,
+            "path": "test/FAA",
+            "windowSize": {
+                "width": 3839,
+                "height": 2159
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        }
+    }
+}

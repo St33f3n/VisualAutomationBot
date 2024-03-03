@@ -2,8 +2,15 @@ import os
 import json
 from PIL import Image
 
+startup = {"config": {}, "playset": [], "actionset" : {}, "pictures": {}}
+functions = ["actionset", "playset", "keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
 
 class JsonHandler():
+
+    def __init__(self, name) -> None:
+        self.name = name
+        self.jsonData = {}
+        self.loadData()
 
     # from lib.JsonHandler import JsonHandler 
     # than JsonHandler.create_...
@@ -15,27 +22,50 @@ class JsonHandler():
         return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
 
     # TODO reag img path
-    def create_imageData(name, img : Image, path):
+    def saveNewPicture(self, name, img : Image, path, windowSize, screenSize):
         w, h = img.size
-        # p = img.filename
-        return (name, {'width': w, 'height' : h, 'path': path})
+        window_width, window_height = windowSize
+        screen_width, screen_height = screenSize
+        data = {
+            name: {
+                "width": w,
+                "height": h,
+                "path": path,
+                "windowSize": {
+                    "width": window_width,
+                    "height": window_height
+                },
+                "screenSize": {
+                    "width": screen_width,
+                    "height": screen_height
+                }
+            }
+        }
+        self.add(data, "pictures",)
+        self.saveData()
 
 
-    def __init__(self, name) -> None:
-        self.name = name
-        self.jsonData = {}
-        self.loadData()
+
+  
 
     def __str__(self):
         return self.jsonData
 
     def loadData(self):
-        with open(f'{self.name}/config.json', 'r') as f:
-            self.jsonData = json.load(f)
+        config_file = f'{self.name}/config.json'
+        if os.path.exists(config_file):
+            with open(config_file, 'r') as f:
+                self.jsonData = json.load(f)
+        else:
+            with open(config_file, "w") as f:
+                json.dump(startup, f, indent=4)
+                self.jsonData = startup
 
     def saveData(self): 
         with open(f'{self.name}/config.json', 'w') as f:
-            json.dump(self.jsonData, f, indent=2)
+            json.dump(self.jsonData, f, indent=4)
+
+
 
     # data is Tuple (name, directory)
     def add(self, option, data : tuple):
@@ -43,10 +73,14 @@ class JsonHandler():
             raise ValueError(f'No {option} in jsonData')
         self.jsonData[option][data[0]] = data[1]
 
-    def add(self, option, data : dict):
+    def add(self,  data : dict, option = None):
+        if option == None:
+            self.jsonData.update(data)
+            return
+
         if option not in self.jsonData:
             raise ValueError(f'No {option} in jsonData')
-        self.jsonData[option] # TODO need finish the playset dict add
+        self.jsonData[option].update(data)
 
     def update(self, option, data : tuple):
 
@@ -62,6 +96,8 @@ class JsonHandler():
             raise ValueError(f'No {key} in {option}')
         
         self.jsonData[option][key]["value"] = value
+        # [ ]
+        # self.jsonData[option][key].update(data)
         
         self.saveData()
 
@@ -77,14 +113,18 @@ class JsonHandler():
 
     def getData(self, option : str, key=None):
         # return the complete playset
-        if option == 'playset':
-            return self.jsonData[option]
+        if key == None:
+            if option in self.jsonData:
+                return self.jsonData[option]
+
+        # if option == 'playset':
+        #     return self.jsonData[option]
         
-        if option == 'actionset':
-            return self.jsonData[option]
+        # if option == 'actionset':
+        #     return self.jsonData[option]
         
-        if option == 'pictures' and key == 0:
-            return self.jsonData[option]
+        # if option == 'pictures' and key == 0:
+        #     return self.jsonData[option]
 
         # Checks if a key is valid
         if key not in self.jsonData[option]:
@@ -117,49 +157,49 @@ class JsonHandler():
 
 
 
-def start():
+# def start():
 
-    all = list(filter(os.path.isdir, os.listdir()))
+#     all = list(filter(os.path.isdir, os.listdir()))
 
-    rm = ['.', 'lib']
+#     rm = ['.', 'lib']
 
-    directorys = [x for x in all if not any(substring in x for substring in rm)]
-
-
-    for directory in directorys:
+#     directorys = [x for x in all if not any(substring in x for substring in rm)]
 
 
-        ressource_section = {
-            "money" : {
-                "value" : 0, 
-                "position" : {
-                    "x" : 0,
-                    "y" : 0
-                }
-            },
+#     for directory in directorys:
+
+
+#         ressource_section = {
+#             "money" : {
+#                 "value" : 0, 
+#                 "position" : {
+#                     "x" : 0,
+#                     "y" : 0
+#                 }
+#             },
             
-        }
-        config = {}
-        playset = [{'name' : "",
-                    'arg1' : "",
-                    'arg2' : "",
-                    'argN' : "",
-                    }]
+#         }
+#         config = {}
+#         playset = [{'name' : "",
+#                     'arg1' : "",
+#                     'arg2' : "",
+#                     'argN' : "",
+#                     }]
 
-        pictures_section = {}
+#         pictures_section = {}
 
-        for imge in os.listdir(directory):
-            if any(el in imge for el in ["png", "PNG"]):
+#         for imge in os.listdir(directory):
+#             if any(el in imge for el in ["png", "PNG"]):
 
-                img = Image.open(f"{directory}/{imge}")
-                img_dat = JsonHandler.create_imageData(os.path.splitext(imge)[0], img, f"{directory}/{imge}")
-                # pictures_section[os.path.splitext(imge)[0]] = {'width' : w, 'height' : h, 'path': f'{directory}/{imge}'}
-                pictures_section[img_dat[0]] = img_dat[1]
+#                 img = Image.open(f"{directory}/{imge}")
+#                 img_dat = JsonHandler.create_imageData(os.path.splitext(imge)[0], img, f"{directory}/{imge}")
+#                 # pictures_section[os.path.splitext(imge)[0]] = {'width' : w, 'height' : h, 'path': f'{directory}/{imge}'}
+#                 pictures_section[img_dat[0]] = img_dat[1]
 
-        full_data = {'config': config, 'ressource' : ressource_section, 'playset' : playset, 'pictures' : pictures_section}
+#         full_data = {'config': config, 'ressource' : ressource_section, 'playset' : playset, 'pictures' : pictures_section}
 
-        file_path = os.path.join(directory, "config.json")
+#         file_path = os.path.join(directory, "config.json")
 
 
-        with open(file_path, 'w') as f:
-            json.dump(full_data, f, indent=2)
+#         with open(file_path, 'w') as f:
+#             json.dump(full_data, f, indent=2)

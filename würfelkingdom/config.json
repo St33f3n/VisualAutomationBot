@@ -1,135 +1,231 @@
 {
-  "config": {},
-  "ressource": {
-    "money": {
-      "value": "61.259 /\n",
-      "position": {
-        "x": 350,
-        "y": 20
-      }
+    "config": {},
+    "ressource": {
+        "money": {
+            "value": "61.259 /\n",
+            "position": {
+                "x": 350,
+                "y": 20
+            }
+        },
+        "energieBlitz": {
+            "value": "150\n",
+            "position": {
+                "x": 61,
+                "y": 20
+            }
+        }
     },
-    "energieBlitz": {
-      "value": "150\n",
-      "position": {
-        "x": 61,
-        "y": 20
-      }
-    }
-  },
-  "playset": [
-    [
-      "locateRessources",
-      "\"money\""
+    "playset": [
+        [
+            "compareRessources((1,1,1))",
+            "energieBlitz",
+            "gratis"
+        ],
+        [
+            "wait()"
+        ],
+        [
+            "conditionalAction(n, 2)",
+            "gast",
+            "shoot",
+            "money"
+        ]
     ],
-    [
-      "locateRessources",
-      "\"energieBlitz\""
-    ],
-    [
-      "clickOnPicture",
-      "\"clickandhold\""
-    ]
-  ],
-  "pictures": {
-    "1x": {
-      "width": 81,
-      "height": 91,
-      "path": "w\u00fcrfelkingdom/1x.PNG"
+    "actionset": {
+        "num1": [
+            [
+                "arg1"
+            ],
+            [
+                "compareRessources((1,1,1))",
+                "arg2.2"
+            ],
+            [
+                "keyPress",
+                "arg2",
+                "arg2"
+            ]
+        ],
+        "num2": [
+            [
+                "arg1",
+                "arg2"
+            ]
+        ],
+        "Test": [
+            [
+                "compareRessources((1,1,1))",
+                "einsammeln",
+                "cancel"
+            ],
+            [
+                "wait()"
+            ]
+        ],
+        "AAD": [
+            [
+                "clickIfPicture(img, img)"
+            ]
+        ],
+        "sggasfhg": [
+            [
+                "compareRessources((1,1,1))"
+            ]
+        ],
+        "": [
+            [
+                "wait()",
+                "cancel"
+            ],
+            [
+                "locateRessources(img)",
+                "cancel",
+                "nachstesKongigreich"
+            ],
+            [
+                "keyPress",
+                "money"
+            ],
+            [
+                "keyPress",
+                "cancel"
+            ]
+        ],
+        "AFADSF": [
+            [
+                "locateRessources(img)",
+                "energieBlitz",
+                "gast"
+            ]
+        ]
     },
-    "2x": {
-      "width": 88,
-      "height": 86,
-      "path": "w\u00fcrfelkingdom/2x.PNG"
-    },
-    "attack": {
-      "width": 124,
-      "height": 98,
-      "path": "w\u00fcrfelkingdom/attack.png"
-    },
-    "baumenu": {
-      "width": 171,
-      "height": 162,
-      "path": "w\u00fcrfelkingdom/baumenu.PNG"
-    },
-    "cancel": {
-      "width": 70,
-      "height": 55,
-      "path": "w\u00fcrfelkingdom/cancel.png"
-    },
-    "clickandhold": {
-      "width": 317,
-      "height": 302,
-      "path": "w\u00fcrfelkingdom/clickandhold.PNG"
-    },
-    "einsammeln": {
-      "width": 309,
-      "height": 88,
-      "path": "w\u00fcrfelkingdom/einsammeln.png"
-    },
-    "energieBlitz": {
-      "width": 55,
-      "height": 100,
-      "path": "w\u00fcrfelkingdom/energieBlitz.PNG"
-    },
-    "energieLeiste": {
-      "width": 579,
-      "height": 100,
-      "path": "w\u00fcrfelkingdom/energieLeiste.PNG"
-    },
-    "gast": {
-      "width": 229,
-      "height": 115,
-      "path": "w\u00fcrfelkingdom/gast.PNG"
-    },
-    "geldbaumenu": {
-      "width": 90,
-      "height": 86,
-      "path": "w\u00fcrfelkingdom/geldbaumenu.PNG"
-    },
-    "gift": {
-      "width": 222,
-      "height": 216,
-      "path": "w\u00fcrfelkingdom/gift.PNG"
-    },
-    "gratis": {
-      "width": 174,
-      "height": 108,
-      "path": "w\u00fcrfelkingdom/gratis.png"
-    },
-    "money": {
-      "width": 144,
-      "height": 133,
-      "path": "w\u00fcrfelkingdom/money.PNG"
-    },
-    "nachstesKongigreich": {
-      "width": 405,
-      "height": 147,
-      "path": "w\u00fcrfelkingdom/nachstesKongigreich.PNG"
-    },
-    "rauben": {
-      "width": 145,
-      "height": 178,
-      "path": "w\u00fcrfelkingdom/rauben.png"
-    },
-    "shoot": {
-      "width": 436,
-      "height": 537,
-      "path": "w\u00fcrfelkingdom/shoot.png"
-    },
-    "target": {
-      "width": 96,
-      "height": 97,
-      "path": "w\u00fcrfelkingdom/target.png"
-    },
-    "timetilwurfel": {
-      "width": 434,
-      "height": 77,
-      "path": "w\u00fcrfelkingdom/timetilwurfel.PNG"
-    },
-    "wurfeln": {
-      "width": 212,
-      "height": 275,
-      "path": "w\u00fcrfelkingdom/wurfeln.png"
+    "pictures": {
+        "1x": {
+            "width": 81,
+            "height": 91,
+            "path": "w\u00fcrfelkingdom/1x.PNG"
+        },
+        "2x": {
+            "width": 88,
+            "height": 86,
+            "path": "w\u00fcrfelkingdom/2x.PNG"
+        },
+        "attack": {
+            "width": 124,
+            "height": 98,
+            "path": "w\u00fcrfelkingdom/attack.png"
+        },
+        "baumenu": {
+            "width": 171,
+            "height": 162,
+            "path": "w\u00fcrfelkingdom/baumenu.PNG"
+        },
+        "cancel": {
+            "width": 70,
+            "height": 55,
+            "path": "w\u00fcrfelkingdom/cancel.png"
+        },
+        "clickandhold": {
+            "width": 317,
+            "height": 302,
+            "path": "w\u00fcrfelkingdom/clickandhold.PNG"
+        },
+        "einsammeln": {
+            "width": 309,
+            "height": 88,
+            "path": "w\u00fcrfelkingdom/einsammeln.png"
+        },
+        "energieBlitz": {
+            "width": 55,
+            "height": 100,
+            "path": "w\u00fcrfelkingdom/energieBlitz.PNG"
+        },
+        "energieLeiste": {
+            "width": 579,
+            "height": 100,
+            "path": "w\u00fcrfelkingdom/energieLeiste.PNG"
+        },
+        "gast": {
+            "width": 229,
+            "height": 115,
+            "path": "w\u00fcrfelkingdom/gast.PNG"
+        },
+        "geldbaumenu": {
+            "width": 90,
+            "height": 86,
+            "path": "w\u00fcrfelkingdom/geldbaumenu.PNG"
+        },
+        "gift": {
+            "width": 222,
+            "height": 216,
+            "path": "w\u00fcrfelkingdom/gift.PNG"
+        },
+        "gratis": {
+            "width": 174,
+            "height": 108,
+            "path": "w\u00fcrfelkingdom/gratis.png"
+        },
+        "money": {
+            "width": 144,
+            "height": 133,
+            "path": "w\u00fcrfelkingdom/money.PNG"
+        },
+        "nachstesKongigreich": {
+            "width": 405,
+            "height": 147,
+            "path": "w\u00fcrfelkingdom/nachstesKongigreich.PNG"
+        },
+        "rauben": {
+            "width": 145,
+            "height": 178,
+            "path": "w\u00fcrfelkingdom/rauben.png"
+        },
+        "shoot": {
+            "width": 436,
+            "height": 537,
+            "path": "w\u00fcrfelkingdom/shoot.png"
+        },
+        "target": {
+            "width": 96,
+            "height": 97,
+            "path": "w\u00fcrfelkingdom/target.png"
+        },
+        "timetilwurfel": {
+            "width": 434,
+            "height": 77,
+            "path": "w\u00fcrfelkingdom/timetilwurfel.PNG"
+        },
+        "wurfeln": {
+            "width": 212,
+            "height": 275,
+            "path": "w\u00fcrfelkingdom/wurfeln.png"
+        },
+        "cadadada": {
+            "width": 566,
+            "height": 906,
+            "path": "w\u00fcrfelkingdom/cadadada",
+            "windowSize": {
+                "width": 3785,
+                "height": 2159
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "HUDUDU": {
+            "width": 926,
+            "height": 1104,
+            "path": "w\u00fcrfelkingdom/HUDUDU",
+            "windowSize": {
+                "width": 1652,
+                "height": 897
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        }
     }
-  }
 }

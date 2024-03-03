@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>1</number>
+     <number>2</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -57,6 +57,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="killButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>180</x>
@@ -70,6 +73,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="start_stopButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -94,6 +100,9 @@
       <string>Create</string>
      </attribute>
      <widget class="QPushButton" name="takePictureButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>30</x>
@@ -120,6 +129,9 @@
       </property>
      </widget>
      <widget class="QPushButton" name="createSaveButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
         <x>540</x>
@@ -169,6 +181,19 @@
        <string>Picture Name</string>
       </property>
      </widget>
+     <widget class="QPushButton" name="selectFrameSizeButton">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>20</y>
+        <width>141</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="text">
+       <string>Select Window</string>
+      </property>
+     </widget>
     </widget>
     <widget class="QWidget" name="gameplay_tab">
      <property name="sizePolicy">
@@ -180,178 +205,6 @@
      <attribute name="title">
       <string>Gameplay</string>
      </attribute>
-     <widget class="QPushButton" name="clickIfPictureButton">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>278</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Click if Picture</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="addButton">
-      <property name="geometry">
-       <rect>
-        <x>650</x>
-        <y>528</y>
-        <width>93</width>
-        <height>28</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Add</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="keyPressButton">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>158</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Key Press</string>
-      </property>
-     </widget>
-     <widget class="QPushButton" name="locateRessourceButton">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>418</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>locate Ressource</string>
-      </property>
-     </widget>
-     <widget class="QScrollArea" name="scrollArea">
-      <property name="geometry">
-       <rect>
-        <x>10</x>
-        <y>20</y>
-        <width>351</width>
-        <height>711</height>
-       </rect>
-      </property>
-      <property name="horizontalScrollBarPolicy">
-       <enum>Qt::ScrollBarAsNeeded</enum>
-      </property>
-      <property name="sizeAdjustPolicy">
-       <enum>QAbstractScrollArea::AdjustIgnored</enum>
-      </property>
-      <property name="widgetResizable">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-      </property>
-      <widget class="QWidget" name="scrollAreaWidgetContents">
-       <property name="geometry">
-        <rect>
-         <x>0</x>
-         <y>0</y>
-         <width>349</width>
-         <height>709</height>
-        </rect>
-       </property>
-       <property name="minimumSize">
-        <size>
-         <width>349</width>
-         <height>709</height>
-        </size>
-       </property>
-       <widget class="QLabel" name="textlist">
-        <property name="geometry">
-         <rect>
-          <x>0</x>
-          <y>0</y>
-          <width>351</width>
-          <height>710</height>
-         </rect>
-        </property>
-        <property name="sizePolicy">
-         <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
-          <horstretch>0</horstretch>
-          <verstretch>0</verstretch>
-         </sizepolicy>
-        </property>
-        <property name="mouseTracking">
-         <bool>false</bool>
-        </property>
-        <property name="text">
-         <string/>
-        </property>
-        <property name="scaledContents">
-         <bool>false</bool>
-        </property>
-        <property name="alignment">
-         <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
-        </property>
-        <property name="wordWrap">
-         <bool>true</bool>
-        </property>
-       </widget>
-      </widget>
-     </widget>
-     <widget class="QLineEdit" name="yLabel">
-      <property name="geometry">
-       <rect>
-        <x>700</x>
-        <y>108</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="inputMask">
-       <string>9999</string>
-      </property>
-      <property name="placeholderText">
-       <string>Y</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="xLabel">
-      <property name="geometry">
-       <rect>
-        <x>620</x>
-        <y>108</y>
-        <width>71</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="inputMask">
-       <string>9999</string>
-      </property>
-      <property name="placeholderText">
-       <string>X</string>
-      </property>
-     </widget>
-     <widget class="QLineEdit" name="keyLabel">
-      <property name="geometry">
-       <rect>
-        <x>620</x>
-        <y>168</y>
-        <width>101</width>
-        <height>22</height>
-       </rect>
-      </property>
-      <property name="inputMask">
-       <string/>
-      </property>
-      <property name="text">
-       <string/>
-      </property>
-      <property name="placeholderText">
-       <string>Press Key</string>
-      </property>
-     </widget>
      <widget class="QPushButton" name="openDirButton">
       <property name="geometry">
        <rect>
@@ -376,32 +229,25 @@
       <property name="geometry">
        <rect>
         <x>590</x>
-        <y>218</y>
+        <y>20</y>
         <width>231</width>
-        <height>301</height>
+        <height>501</height>
        </rect>
       </property>
-     </widget>
-     <widget class="QPushButton" name="simpleClickButton">
-      <property name="geometry">
-       <rect>
-        <x>440</x>
-        <y>98</y>
-        <width>141</width>
-        <height>41</height>
-       </rect>
-      </property>
-      <property name="text">
-       <string>Simple Click</string>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
       </property>
      </widget>
      <widget class="QPushButton" name="saveButton">
+      <property name="enabled">
+       <bool>false</bool>
+      </property>
       <property name="geometry">
        <rect>
-        <x>380</x>
+        <x>370</x>
         <y>618</y>
         <width>191</width>
-        <height>91</height>
+        <height>51</height>
        </rect>
       </property>
       <property name="font">
@@ -415,24 +261,43 @@
        <string>Save</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="clickOnPictureButton">
+     <widget class="QListWidget" name="textlist">
       <property name="geometry">
        <rect>
-        <x>440</x>
-        <y>348</y>
-        <width>141</width>
-        <height>41</height>
+        <x>10</x>
+        <y>70</y>
+        <width>271</width>
+        <height>711</height>
        </rect>
       </property>
-      <property name="text">
-       <string>click On Picture</string>
+      <property name="dragEnabled">
+       <bool>false</bool>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragDrop</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::MoveAction</enum>
       </property>
      </widget>
-     <widget class="QPushButton" name="openConfigButton">
+     <widget class="QListWidget" name="functionWidget">
       <property name="geometry">
        <rect>
-        <x>600</x>
-        <y>668</y>
+        <x>350</x>
+        <y>20</y>
+        <width>231</width>
+        <height>501</height>
+       </rect>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DragOnly</enum>
+      </property>
+     </widget>
+     <widget class="QPushButton" name="keyValueButton">
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>540</y>
         <width>191</width>
         <height>51</height>
        </rect>
@@ -445,21 +310,165 @@
        </font>
       </property>
       <property name="text">
-       <string>Open Config</string>
+       <string>Add Value</string>
       </property>
      </widget>
-     <widget class="QPushButton" name="deleteLastButton">
+     <widget class="QLineEdit" name="valueTextBox">
       <property name="geometry">
        <rect>
-        <x>390</x>
-        <y>528</y>
-        <width>161</width>
-        <height>61</height>
+        <x>600</x>
+        <y>540</y>
+        <width>191</width>
+        <height>51</height>
        </rect>
       </property>
-      <property name="text">
-       <string>Delete Last</string>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
       </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="placeholderText">
+       <string>Value or Name</string>
+      </property>
+     </widget>
+     <widget class="QComboBox" name="comboBox">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>20</y>
+        <width>271</width>
+        <height>41</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>12</pointsize>
+       </font>
+      </property>
+     </widget>
+     <widget class="QLineEdit" name="newSaveTextBox">
+      <property name="enabled">
+       <bool>true</bool>
+      </property>
+      <property name="geometry">
+       <rect>
+        <x>370</x>
+        <y>690</y>
+        <width>191</width>
+        <height>51</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>14</pointsize>
+       </font>
+      </property>
+      <property name="autoFillBackground">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="placeholderText">
+       <string>Savename</string>
+      </property>
+      <property name="clearButtonEnabled">
+       <bool>false</bool>
+      </property>
+     </widget>
+     <widget class="QListWidget" name="trash">
+      <property name="geometry">
+       <rect>
+        <x>300</x>
+        <y>70</y>
+        <width>31</width>
+        <height>711</height>
+       </rect>
+      </property>
+      <property name="font">
+       <font>
+        <pointsize>1</pointsize>
+       </font>
+      </property>
+      <property name="autoScroll">
+       <bool>false</bool>
+      </property>
+      <property name="autoScrollMargin">
+       <number>0</number>
+      </property>
+      <property name="dragDropMode">
+       <enum>QAbstractItemView::DropOnly</enum>
+      </property>
+      <property name="defaultDropAction">
+       <enum>Qt::IgnoreAction</enum>
+      </property>
+     </widget>
+     <zorder>trash</zorder>
+     <zorder>openDirButton</zorder>
+     <zorder>pictureWidget</zorder>
+     <zorder>saveButton</zorder>
+     <zorder>textlist</zorder>
+     <zorder>functionWidget</zorder>
+     <zorder>keyValueButton</zorder>
+     <zorder>valueTextBox</zorder>
+     <zorder>comboBox</zorder>
+     <zorder>newSaveTextBox</zorder>
+    </widget>
+    <widget class="QWidget" name="builder_tab">
+     <property name="accessibleName">
+      <string/>
+     </property>
+     <attribute name="title">
+      <string>Page</string>
+     </attribute>
+     <widget class="QLabel" name="textlist_2">
+      <property name="geometry">
+       <rect>
+        <x>10</x>
+        <y>10</y>
+        <width>361</width>
+        <height>781</height>
+       </rect>
+      </property>
+      <property name="sizePolicy">
+       <sizepolicy hsizetype="Expanding" vsizetype="Preferred">
+        <horstretch>0</horstretch>
+        <verstretch>0</verstretch>
+       </sizepolicy>
+      </property>
+      <property name="mouseTracking">
+       <bool>false</bool>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="scaledContents">
+       <bool>false</bool>
+      </property>
+      <property name="alignment">
+       <set>Qt::AlignLeading|Qt::AlignLeft|Qt::AlignTop</set>
+      </property>
+      <property name="wordWrap">
+       <bool>true</bool>
+      </property>
+     </widget>
+     <widget class="QTreeWidget" name="treeWidget">
+      <property name="geometry">
+       <rect>
+        <x>420</x>
+        <y>150</y>
+        <width>256</width>
+        <height>192</height>
+       </rect>
+      </property>
+      <column>
+       <property name="text">
+        <string notr="true">1</string>
+       </property>
+      </column>
      </widget>
     </widget>
    </widget>
@@ -522,118 +531,6 @@
    </hints>
   </connection>
   <connection>
-   <sender>addButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>add()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>697</x>
-     <y>596</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clickIfPictureButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>clickIfPicture()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>353</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>clickOnPictureButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>clickOnPicture()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>423</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>deleteLastButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>deleteLast()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>471</x>
-     <y>613</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>keyPressButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>keyPress()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>233</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>locateRessourceButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>locateRessource()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>493</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>openConfigButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>openConfig()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>696</x>
-     <y>748</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
    <sender>openDirButton</sender>
    <signal>clicked()</signal>
    <receiver>MainWindow</receiver>
@@ -658,22 +555,6 @@
     <hint type="sourcelabel">
      <x>476</x>
      <y>718</y>
-    </hint>
-    <hint type="destinationlabel">
-     <x>423</x>
-     <y>436</y>
-    </hint>
-   </hints>
-  </connection>
-  <connection>
-   <sender>simpleClickButton</sender>
-   <signal>clicked()</signal>
-   <receiver>MainWindow</receiver>
-   <slot>simpleClick()</slot>
-   <hints>
-    <hint type="sourcelabel">
-     <x>511</x>
-     <y>173</y>
     </hint>
     <hint type="destinationlabel">
      <x>423</x>
@@ -777,6 +658,54 @@
     </hint>
    </hints>
   </connection>
+  <connection>
+   <sender>selectFrameSizeButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>selectFrameSize()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>371</x>
+     <y>95</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>keyValueButton</sender>
+   <signal>clicked()</signal>
+   <receiver>MainWindow</receiver>
+   <slot>keyPress()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>456</x>
+     <y>623</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
+  <connection>
+   <sender>comboBox</sender>
+   <signal>currentIndexChanged(int)</signal>
+   <receiver>MainWindow</receiver>
+   <slot>handleComboBoxSelection()</slot>
+   <hints>
+    <hint type="sourcelabel">
+     <x>146</x>
+     <y>98</y>
+    </hint>
+    <hint type="destinationlabel">
+     <x>423</x>
+     <y>436</y>
+    </hint>
+   </hints>
+  </connection>
  </connections>
  <slots>
   <slot>openDir()</slot>
@@ -796,5 +725,7 @@
   <slot>selectGame()</slot>
   <slot>takePicture()</slot>
   <slot>createSave()</slot>
+  <slot>selectFrameSize()</slot>
+  <slot>handleComboBoxSelection()</slot>
  </slots>
 </ui>
