@@ -35,9 +35,9 @@ from PIL import Image
 #                     drag.exec_(Qt.MoveAction)
 
 #         return super().eventFilter(obj, event)
-class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
+class App(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
-        super(ExampleApp, self).__init__(parent)
+        super(App, self).__init__(parent)
         self.setupUi(self)
         self.jHandler = None
         self.com = Commander()
@@ -88,6 +88,7 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
             # Init ComboBox
             dropDown = ["playset"]
             actionset_keys = self.jHandler.getData('actionset').keys()
+            self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
             dropDown.extend(["actionset : " + key for key in actionset_keys])
             dropDown.append("Add new Actionset")
 
@@ -106,10 +107,20 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
                 if temp:
                     arr.append(temp)
                     temp = []
+            if item_text.split(" : ")[0] == "actionset":
+                item_text = item_text.split(" : ")[1]
             temp.append(item_text)
         
         if temp:
             arr.append(temp)
+
+        for sublist in arr:
+            # Check if the sublist has more than one element
+            if len(sublist) > 1:
+                # Add double quotes around each element except the first one
+                for i in range(1, len(sublist)):
+                    sublist[i] = f"\"{sublist[i]}\""
+
 
         if self.comboBoxselected_item == "playset":
             data = {'playset': arr}
@@ -145,6 +156,7 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def handleComboBoxSelection(self, index):
         self.comboBoxselected_item = self.comboBox.itemText(index)
+        self.newSaveTextBox.hide()
 
         self.textlist.clear()
 
@@ -152,12 +164,18 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
         actionset_text = ["actionset : " + key for key in actionset_keys]
         if self.comboBoxselected_item == "playset":
             item = sum(self.jHandler.getData('playset'), [])
+            for i in range(len(item)):
+                if isinstance(item[i], str):
+                    item[i] = item[i].replace('"', '')
             self.textlist.addItems(item)
 
 
         if self.comboBoxselected_item in actionset_text:
             key = self.comboBoxselected_item.split(" : ")[1]
             item = sum(self.jHandler.getData('actionset', key ), [])
+            for i in range(len(item)):
+                if isinstance(item[i], str):
+                    item[i] = item[i].replace('"', '')
             self.textlist.addItems(item)
 
         if self.comboBoxselected_item == "Add new Actionset":
@@ -311,7 +329,7 @@ class ExampleApp(QtWidgets.QMainWindow, Ui_MainWindow):
 
 def main():
     app = QApplication(sys.argv)
-    form = ExampleApp()
+    form = App()
     form.show()
     sys.exit(app.exec_())
 

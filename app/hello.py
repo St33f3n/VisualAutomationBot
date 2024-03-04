@@ -201,7 +201,7 @@ class Ui_MainWindow(object):
 
     def retranslateUi(self, MainWindow):
         _translate = QtCore.QCoreApplication.translate
-        MainWindow.setWindowTitle(_translate("MainWindow", "MainWindow"))
+        MainWindow.setWindowTitle(_translate("MainWindow", "Visual Automation Bot"))
         self.loadGameButton.setText(_translate("MainWindow", "Load Game"))
         self.killButton.setText(_translate("MainWindow", "KILL"))
         self.start_stopButton.setText(_translate("MainWindow", "Start"))

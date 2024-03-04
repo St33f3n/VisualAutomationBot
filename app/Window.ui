@@ -18,7 +18,7 @@
    </font>
   </property>
   <property name="windowTitle">
-   <string>MainWindow</string>
+   <string>Visual Automation Bot</string>
   </property>
   <property name="styleSheet">
    <string notr="true"/>

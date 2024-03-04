@@ -19,17 +19,27 @@
     "playset": [
         [
             "compareRessources((1,1,1))",
-            "energieBlitz",
-            "gratis"
+            "\"einsammeln\"",
+            "\"baumenu\"",
+            "\"gratis\""
         ],
         [
             "wait()"
         ],
         [
             "conditionalAction(n, 2)",
-            "gast",
-            "shoot",
-            "money"
+            "\"energieLeiste\"",
+            "\"einsammeln\""
+        ],
+        [
+            "conditionalAction(n, 2)",
+            "\"gast\"",
+            "\"money\"",
+            "\"AAD\"",
+            "\"\"",
+            "\"sggasfhg\"",
+            "\"num2\"",
+            "\"Test\""
         ]
     ],
     "actionset": {
@@ -39,12 +49,12 @@
             ],
             [
                 "compareRessources((1,1,1))",
-                "arg2.2"
+                "\"arg2.2\""
             ],
             [
                 "keyPress",
-                "arg2",
-                "arg2"
+                "\"arg2\"",
+                "\"arg2\""
             ]
         ],
         "num2": [
