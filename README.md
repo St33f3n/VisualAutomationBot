@@ -1,17 +1,19 @@
 # Visual Automation Bot
 
 ## Übersicht
-### [[Erklärung]]
+
+### Erklärung
 ##### Was ist ein Visual Automation Bot?
 
-### [[Motivation]]
+### Motivation
 ##### Warum baut man so etwas?
 ##### Was braucht man dafür?
 
-### [[Funktionsprinzip]]
-### Funktionsweise und Logik
+### Funktionsprinzip
+#### Funktionsweise und Logik
 ##### Grundprinzip
 ##### Erweiterte Logik
+
 ### Datenspeicherung und Benutzeroberfläche
 #### JSON - Permanente Daten
 #### Benutzeroberfläche
@@ -20,15 +22,15 @@
 ##### Playset-Builder
 
 
-### [[Deployment]]
+### Deployment
 #### Pyenv
 ##### Pyhton Packages
-
 #### Tesseract
 
-### [[Zukunft]]
+### Zukunft
 #### Ki
 #### WebSite
 ##### Datenbank
 ##### OnlineBuildTool
-### [[Quellen]]
+
+### Quellen
