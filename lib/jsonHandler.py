@@ -6,7 +6,13 @@ startup = {"config": {}, "playset": [], "actionset" : {}, "pictures": {}}
 functions = ["keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
 
 class JsonHandler():
+    """
+    A class to handle JSON data.
 
+    Attributes:
+        name (str): The name of the JSON file.
+        jsonData (dict): The JSON data.
+    """
     def __init__(self, name) -> None:
         self.name = name
         self.jsonData = {}
@@ -16,13 +22,45 @@ class JsonHandler():
     # than JsonHandler.create_...
     # no object need to be created
     def create_ressourceData(name, value, x, y):
+            """
+        Creates resource data.
+
+        Args:
+            name (str): The name of the resource.
+            value (int): The value of the resource.
+            x (int): The x-coordinate of the resource.
+            y (int): The y-coordinate of the resource.
+
+        Returns:
+            dict: The resource data.
+        """
             return {name : {'value' : value, 'position' : {'x' : x,'y' : y}}}
 
     def create_playsetData(name, arg1, arg2, argN):
+        """
+        Creates playset data.
+
+        Args:
+            name (str): The name of the playset.
+            arg1, arg2, argN: The arguments for the playset.
+
+        Returns:
+            dict: The playset data.
+        """
         return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
 
     # TODO reag img path
     def saveNewPicture(self, name, img : Image, path, windowSize, screenSize):
+        """
+        Saves a new picture.
+
+        Args:
+            name (str): The name of the picture.
+            img (Image): The image object.
+            path (str): The path of the image.
+            windowSize (tuple): The size of the window.
+            screenSize (tuple): The size of the screen.
+        """
         w, h = img.size
         window_width, window_height = windowSize
         screen_width, screen_height = screenSize
@@ -49,9 +87,18 @@ class JsonHandler():
   
 
     def __str__(self):
+        """
+        Returns a string representation of the JSON data.
+
+        Returns:
+            str: String representation of the JSON data.
+        """
         return self.jsonData
 
     def loadData(self):
+        """
+        Loads JSON data from file.
+        """
         config_file = f'{self.name}/config.json'
         if os.path.exists(config_file):
             with open(config_file, 'r') as f:
@@ -62,6 +109,9 @@ class JsonHandler():
                 self.jsonData = startup
 
     def saveData(self): 
+        """
+        Saves JSON data to file.
+        """
         with open(f'{self.name}/config.json', 'w') as f:
             json.dump(self.jsonData, f, indent=4)
 
@@ -69,11 +119,25 @@ class JsonHandler():
 
     # data is Tuple (name, directory)
     def add(self, option, data : tuple):
+        """
+        Adds data to JSON.
+
+        Args:
+            data (dict): The data to add.
+            option (str, optional): The option to add data to. Defaults to None.
+        """
         if option not in self.jsonData:
             raise ValueError(f'No {option} in jsonData')
         self.jsonData[option][data[0]] = data[1]
 
     def add(self,  data : dict, option = None):
+        """
+        Updates JSON data.
+
+        Args:
+            option (str): The option to update.
+            data (tuple): The data to update.
+        """
         if option == None:
             self.jsonData.update(data)
             return
@@ -108,10 +172,23 @@ class JsonHandler():
     #     self.saveData()
 
     def remove(self):
+        """
+        Removes JSON data.
+        """
         None
   
 
     def getData(self, option : str, key=None):
+        """
+        Gets JSON data.
+
+        Args:
+            option (str): The option to get data from.
+            key (str, optional): The key to get. Defaults to None.
+
+        Returns:
+            dict: The requested data.
+        """
         # return the complete playset
         if key == None:
             if option in self.jsonData:
@@ -135,6 +212,15 @@ class JsonHandler():
         return data
 
     def getPictureData(self, key):
+        """
+        Gets picture data.
+
+        Args:
+            key (str): The key of the picture.
+
+        Returns:
+            tuple: The picture data.
+        """
         data = self.getData('pictures', key=key)
         w = data['width']
         h = data['height']
@@ -145,6 +231,15 @@ class JsonHandler():
         return (w, h, img)
     
     def getRessourceData(self, key):
+        """
+        Gets resource data.
+
+        Args:
+            key (str): The key of the resource.
+
+        Returns:
+            tuple: The resource data.
+        """
         data = self.getData('ressource', key=key)
         v = data['value']
         sx = data['position']['x']
