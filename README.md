@@ -2,7 +2,7 @@
 
 ## Übersicht
 
-### Erklärung
+### [Erklärung](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/Erkl%C3%A4rung.md)
 - Was ist ein Visual Automation Bot?
 
 ### Motivation
