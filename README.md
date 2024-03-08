@@ -10,7 +10,7 @@
 - Was benötigt man dafür
 	- Die Programmiersprache
 	- Programmteile
-### [Funktionsweise und Logik](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/Funktionsweise und Logik.md)
+### [Funktionsweise und Logik](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/Funktionsweise%20und%20Logik.md')
 - Grundprinzip
 - Erweiterte Logik
 - Image Recognition Algorythm
