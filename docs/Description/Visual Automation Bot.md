@@ -1,18 +1,3 @@
----
-Status: inWork
-tags:
-  - Projekt
-Links:
-  - "[[Übersicht über alle Projekte]]"
-Deadline: 2024-03-10
-Area:
-  - ProgrammierJourney
-Progress: 🟨
-checksum: 
-Erstellungsdatum: 2024-03-07
-Modifikationsdatum: 2024-03-07
----
-
 # Visual Automation Bot
 
 ## Übersicht

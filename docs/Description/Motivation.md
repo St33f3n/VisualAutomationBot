@@ -1,12 +1,3 @@
----
-Erstellungsdatum: 2024-03-07
-Modifikationsdatum: 2024-03-07
-tags:
-Status: 
-Links: 
-checksum:
----
-
 # Motivation
 
 ## Warum baut man so etwas?

@@ -1,14 +1,3 @@
----
-Status: inWork
-tags:
-  - Projekt
-Links:
-  - "[[Übersicht über alle Projekte]]"
-checksum: 
-Erstellungsdatum: 2024-03-08
-Modifikationsdatum: 2024-03-08
----
-
 # Funktionsweise und Logik
 
 ## Grundprinzip

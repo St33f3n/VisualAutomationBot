@@ -1,17 +1,3 @@
----
-Erstellungsdatum: 2024-03-07
-Modifikationsdatum: 2024-03-07
-tags:
-  - Projekt
-  - Programmieren
-  - Programmieren/Python
-  - Automatisierung
-Status: inWork
-Links:
-  - "[[Visual Automation Bot]]"
-checksum:
----
-
 # Erklärung
 
 ## Was ist ein Visual Automation Bot?
