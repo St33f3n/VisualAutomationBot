@@ -47,7 +47,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.windowSize = None
         self.screenSize = pyautogui.size()
         self.comboBoxselected_item = None
-
+        self.thread_var = None
         self.newSaveTextBox.hide()
 
         # self.setAcceptDrops(True)
@@ -283,30 +283,33 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
             self.loadGameButton.setText(folder_name)
 
-            thread = threading.Thread(target=self.com.addGame, args=(folder_name,))
-            thread.start()
-            print(self.com)
+            self.thread_var = threading.Thread(target=self.com.addGame, args=(folder_name,))
+            self.thread_var.start()
             self.start_stopButton.setEnabled(True)
             self.killButton.setEnabled(True)
         
 
-    def selectArea(self):
-        pass
-
     def kill(self):
         pass
+
+    def start_game_loop(com):
+        com.gameLoop(True)
+
+    def stop_game_loop(com):
+        com.gameLoop(False)
 
     def start_stop(self):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
             self.start_stopButton.setStyleSheet("background-color : red")
-            self.game_loop_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+            self.game_loop_thread = threading.Thread(target=self.start_game_loop, args=(self.com,))
             self.game_loop_thread.start()
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
             if hasattr(self, 'game_loop_thread') and self.game_loop_thread.is_alive():
-                self.com.gameLoop(False)
+                stop_thread = threading.Thread(target=self.stop_game_loop, args=(self.com,))
+                stop_thread.start()
 
     # Create 
             
