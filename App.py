@@ -292,6 +292,12 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     def kill(self):
         pass
 
+    def start_game_loop(self, com):
+        com.gameLoop(True)
+
+    def stop_game_loop(self, com):
+        com.gameLoop(False)
+
     def start_stop(self):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
