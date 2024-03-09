@@ -93,8 +93,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.pictureWidget.addItems(pic)
             # self.functionWidget.addItems(functions)
 
+<<<<<<< HEAD
     
+           a
+=======
+            a
            
+>>>>>>> 5079df6f8f7b43c2e81c2a8d0b848913df04d83f
 
             for function, description in functions.items():
                 item = QListWidgetItem(function)
