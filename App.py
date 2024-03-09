@@ -150,17 +150,19 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             aset, key = self.comboBoxselected_item.split(" : ")
 
+        
+        
+        result = {key : arr}
+        print(result)
+        self.jHandler.add(result, "actionset",)
+        self.jHandler.saveData()
+
         # Renew the functionWidget
         self.functionWidget.clear()
         self.functionWidget.addItems(functions)
         actionset_keys = self.jHandler.getData('actionset').keys()
         self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
 
-        
-        result = {key : arr}
-        print(result)
-        self.jHandler.add(result, "actionset",)
-        self.jHandler.saveData()
         
 
     def handleComboBoxSelection(self, index):
