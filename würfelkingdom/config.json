@@ -93,7 +93,7 @@
         "attack": {
             "width": 124,
             "height": 98,
-            "path": "w\u00fcrfelkingdom/attack.png"
+            "path": "w\u00fcrfelkingdom/attack"
         },
         "baumenu": {
             "width": 162,
@@ -202,7 +202,7 @@
         "gift": {
             "width": 222,
             "height": 216,
-            "path": "w\u00fcrfelkingdom/gift.PNG"
+            "path": "w\u00fcrfelkingdom/gift"
         },
         "gratis": {
             "width": 280,
@@ -233,7 +233,7 @@
         "nachstesKongigreich": {
             "width": 405,
             "height": 147,
-            "path": "w\u00fcrfelkingdom/nachstesKongigreich.PNG"
+            "path": "w\u00fcrfelkingdom/nachstesKongigreich"
         },
         "rauben": {
             "width": 227,
@@ -277,12 +277,12 @@
         "timetilwurfel": {
             "width": 434,
             "height": 77,
-            "path": "w\u00fcrfelkingdom/timetilwurfel.PNG"
+            "path": "w\u00fcrfelkingdom/timetilwurfel"
         },
         "wurfeln": {
             "width": 212,
             "height": 275,
-            "path": "w\u00fcrfelkingdom/wurfeln.png"
+            "path": "w\u00fcrfelkingdom/wurfeln"
         },
         "cadadada": {
             "width": 566,

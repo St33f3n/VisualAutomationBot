@@ -4,8 +4,16 @@ from PIL import Image
 
 startup = {"config": {}, "playset": [], "actionset" : {}, "pictures": {}}
 # functions = ["keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
-functions = ["keyPress", "compareRessources",  "clickIfPicture", "locateRessources", "wait", "conditionalAction"] # dragMouse 
-
+functions = {
+    "keyPress": "Simulate a key press event",
+    "compareRessources": "Compare resources",
+    "clickIfPicture": "Click if picture found",
+    "locateRessources": "Locate resources",
+    "wait": "Wait for a certain duration",
+    "conditionalAction": "Perform an action conditionally",
+    "dragPictureToPicture": "Drag a picture to another picture",
+    "dragFromPicture": "Drag from a picture",
+}
 class JsonHandler():
     """
     A class to handle JSON data.
