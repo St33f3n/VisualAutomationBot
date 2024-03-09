@@ -60,30 +60,33 @@ class Gamer():
 
     @staticmethod
     def getCommandArea():
-        """🖱️ Get the command area coordinates."""
-        print("Select the upper left edge on wich you want to start the bot.\nPress w to capture the edge.")
-        while True:
-            if keyboard.read_key() == 'w':
-                upperEdge = pyautogui.position()
-                break
-            
-            print(".", " ")
+        try:
+            """🖱️ Get the command area coordinates."""
+            print("Select the upper left edge on wich you want to start the bot.\nPress w to capture the edge.")
+            while True:
+                if keyboard.read_key() == 'w':
+                    upperEdge = pyautogui.position()
+                    break
+                
+                print(".", " ")
 
-        print("Select the lower right edge on wich you want to start the bot.\nPress w to capture the edge.")
-        time.sleep(1)
-        while True:
-            if keyboard.read_key() == 'w':
-                lowerEdge = pyautogui.position()
-                break
-            
-            print(".", " ")
+            print("Select the lower right edge on wich you want to start the bot.\nPress w to capture the edge.")
+            time.sleep(1)
+            while True:
+                if keyboard.read_key() == 'w':
+                    lowerEdge = pyautogui.position()
+                    break
+                
+                print(".", " ")
 
-            
-        winPos = {"x" : upperEdge[0], "y" : upperEdge[1], "width" : lowerEdge[0]-upperEdge[0], "height": lowerEdge[1]-upperEdge[1]}
-        print(f"Window at: {winPos} captured!")
-        if lowerEdge != None and upperEdge != None:
-            return winPos
-        else:
+                
+            winPos = {"x" : upperEdge[0], "y" : upperEdge[1], "width" : lowerEdge[0]-upperEdge[0], "height": lowerEdge[1]-upperEdge[1]}
+            print(f"Window at: {winPos} captured!")
+            if lowerEdge != None and upperEdge != None:
+                return winPos
+            else:
+                return None
+        except:
             return None
 
 

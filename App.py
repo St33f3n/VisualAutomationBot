@@ -88,10 +88,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.pictureWidget.addItems(pic)
             self.functionWidget.addItems(functions)
 
-            # Init ComboBox
-            dropDown = ["playset"]
             actionset_keys = self.jHandler.getData('actionset').keys()
             self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
+            # Init ComboBox
+
+            dropDown = ["playset"]
             dropDown.extend(["actionset : " + key for key in actionset_keys])
             dropDown.append("Add new Actionset")
 
@@ -149,6 +150,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             aset, key = self.comboBoxselected_item.split(" : ")
 
+        # Renew the functionWidget
+        self.functionWidget.clear()
+        self.functionWidget.addItems(functions)
+        actionset_keys = self.jHandler.getData('actionset').keys()
+        self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
 
         
         result = {key : arr}
@@ -273,11 +279,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
             self.start_stopButton.setStyleSheet("background-color : red")
-            self.com.gameLoop(True)
+            self.game_loop_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+            self.game_loop_thread.start()
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
-            self.com.gameLoop(False)
+            if hasattr(self, 'game_loop_thread') and self.game_loop_thread.is_alive():
+                self.com.gameLoop(False)
 
     # Create 
             
