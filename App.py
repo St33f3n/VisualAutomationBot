@@ -94,7 +94,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             # self.functionWidget.addItems(functions)
 
     
-           
+           a
 
             for function, description in functions.items():
                 item = QListWidgetItem(function)
