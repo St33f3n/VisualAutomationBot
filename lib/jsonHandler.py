@@ -3,7 +3,8 @@ import json
 from PIL import Image
 
 startup = {"config": {}, "playset": [], "actionset" : {}, "pictures": {}}
-functions = ["keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
+# functions = ["keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
+functions = ["keyPress", "compareRessources",  "clickIfPicture", "locateRessources", "wait", "conditionalAction"] # dragMouse 
 
 class JsonHandler():
     """

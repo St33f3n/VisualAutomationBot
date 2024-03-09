@@ -184,6 +184,12 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.comboBoxselected_item == "Add new Actionset":
             self.newSaveTextBox.show()
 
+    def keyPressEvent(self, event):
+        if event.key() == Qt.Key_Delete:
+            selected_items = self.listWidget.selectedItems()
+            for item in selected_items:
+                self.listWidget.takeItem(self.listWidget.row(item))
+
     # def dragEnterEvent(self, event):
     #     event.accept()
     
@@ -272,7 +278,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
         if os.path.exists(current_dir) == True:
             self.create_folder_name = os.path.basename(current_dir)
-            self.selectGameButton.setText(self.create_folder_name)
+            self.loadGameButton.setText(self.create_folder_name)
             self.jHandler = JsonHandler(self.create_folder_name)
 
     def selectFrameSize(self):
