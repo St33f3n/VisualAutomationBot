@@ -8,7 +8,6 @@ import sys, os
 from lib.commander import Commander
 from lib.gamer import Gamer
 from lib.jsonHandler import JsonHandler, functions
-from PIL.ImageQt import ImageQt
 from PIL import Image
 
 
