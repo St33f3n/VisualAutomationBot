@@ -9,7 +9,7 @@ from lib.commander import Commander
 from lib.gamer import Gamer
 from lib.jsonHandler import JsonHandler, functions
 from PIL import Image
-
+import threading
 
 # class DragHandler(QObject):
 #     def __init__(self, widget):
@@ -256,7 +256,8 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
             self.loadGameButton.setText(folder_name)
 
-            self.com.addGame(folder_name)
+            thread = threading.Thread(target=self.com.addGame, args=(folder_name,))
+            thread.start()
             print(self.com)
             self.start_stopButton.setEnabled(True)
             self.killButton.setEnabled(True)
