@@ -235,7 +235,7 @@ class JsonHandler():
         h = data['height']
         p = data['path']
 
-        img = Image.open(p)
+        img = Image.open(p+".png")
 
         return (w, h, img)
     
