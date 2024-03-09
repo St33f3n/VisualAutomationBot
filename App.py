@@ -273,11 +273,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
             self.start_stopButton.setStyleSheet("background-color : red")
-            self.com.gameLoop(True)
+            self.game_loop_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+            self.game_loop_thread.start()
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
-            self.com.gameLoop(False)
+            if hasattr(self, 'game_loop_thread') and self.game_loop_thread.is_alive():
+                self.com.gameLoop(False)
 
     # Create 
             
