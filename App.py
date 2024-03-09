@@ -50,8 +50,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.newSaveTextBox.hide()
 
-        self.functionWidget.mouseMoveEvent = self.mouseMoveEvent
-
         # self.setAcceptDrops(True)
 
         # self.ddButton = QPushButton('Drag me', self)
