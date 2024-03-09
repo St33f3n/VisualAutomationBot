@@ -244,8 +244,8 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if os.path.exists(current_dir + "/config.json") == True:
             folder_name = os.path.basename(current_dir)
 
-            # self.com.addGame(folder_name)
-            # print(self.com)
+            self.com.addGame(folder_name)
+            print(self.com)
             self.start_stopButton.setEnabled(True)
             self.killButton.setEnabled(True)
 
