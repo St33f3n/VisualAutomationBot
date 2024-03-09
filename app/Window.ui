@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -379,43 +379,6 @@
        <bool>false</bool>
       </property>
      </widget>
-     <widget class="QListWidget" name="trash">
-      <property name="geometry">
-       <rect>
-        <x>300</x>
-        <y>70</y>
-        <width>31</width>
-        <height>711</height>
-       </rect>
-      </property>
-      <property name="font">
-       <font>
-        <pointsize>1</pointsize>
-       </font>
-      </property>
-      <property name="autoScroll">
-       <bool>false</bool>
-      </property>
-      <property name="autoScrollMargin">
-       <number>0</number>
-      </property>
-      <property name="dragDropMode">
-       <enum>QAbstractItemView::DropOnly</enum>
-      </property>
-      <property name="defaultDropAction">
-       <enum>Qt::IgnoreAction</enum>
-      </property>
-     </widget>
-     <zorder>trash</zorder>
-     <zorder>openDirButton</zorder>
-     <zorder>pictureWidget</zorder>
-     <zorder>saveButton</zorder>
-     <zorder>textlist</zorder>
-     <zorder>functionWidget</zorder>
-     <zorder>keyValueButton</zorder>
-     <zorder>valueTextBox</zorder>
-     <zorder>comboBox</zorder>
-     <zorder>newSaveTextBox</zorder>
     </widget>
    </widget>
   </widget>
