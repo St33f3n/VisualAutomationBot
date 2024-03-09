@@ -12,7 +12,7 @@ def deploy_pyenv(pyenv_path, install_pkg=False):
          print("Allready set up")
     # Aktivieren Sie das erstellte pyenv
     activate_script = f'{pyenv_path}/Scripts/activate'
-#    subprocess.run(['cmd', '/K', activate_script], check=True)
+    #subprocess.run(['cmd', '/K', activate_script], check=True)
 
     # Installieren Sie alle Pakete in der virtuellen Umgebung
     if install_pkg:
