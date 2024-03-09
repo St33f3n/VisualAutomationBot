@@ -73,6 +73,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
 
     def openDir(self):
+        # Clear bevor new Folder
+        self.comboBox.clear()
+        self.functionWidget.clear()
+        self.pictureWidget.clear()
+
         options = QFileDialog.Options()
         current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
         if os.path.exists(current_dir + "/config.json") == True:
