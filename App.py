@@ -88,10 +88,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.pictureWidget.addItems(pic)
             self.functionWidget.addItems(functions)
 
-            # Init ComboBox
-            dropDown = ["playset"]
             actionset_keys = self.jHandler.getData('actionset').keys()
             self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
+            # Init ComboBox
+
+            dropDown = ["playset"]
             dropDown.extend(["actionset : " + key for key in actionset_keys])
             dropDown.append("Add new Actionset")
 
@@ -149,6 +150,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             aset, key = self.comboBoxselected_item.split(" : ")
 
+        # Renew the functionWidget
+        self.functionWidget.clear()
+        self.functionWidget.addItems(functions)
+        actionset_keys = self.jHandler.getData('actionset').keys()
+        self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
 
         
         result = {key : arr}
