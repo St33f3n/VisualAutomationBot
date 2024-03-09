@@ -29,7 +29,7 @@ class Commander():
         """⏱️ Generate timers for a game instance."""
         stop = Timers(1,3)
         key = Timers(0.5, 2)
-        click = Timers(1, 2)
+        click = Timers(0.1, 0.6)
         e.addTimer('stop', stop)
         e.addTimer('key', key)
         e.addTimer('click', click)
@@ -70,7 +70,7 @@ class Commander():
         """🔍 Scan for new tasks and manage the game queue."""
         if self.queueLength == 0:
             print("No new tasks, choosing random Task!")
-            self.queueGamer(list(self.gamers.keys())[randint(0,len(self.gamers))])
+            self.queueGamer(list(self.gamers.keys())[randint(0,len(self.gamers)-1)])
         elif self.queueLength < 10:
             print("Getting next Task")
             self.queueGamer(self.nextTask())
