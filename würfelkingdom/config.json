@@ -2,7 +2,7 @@
     "config": {},
     "ressource": {
         "money": {
-            "value": "69.450\n",
+            "value": "",
             "position": {
                 "x": 350,
                 "y": 20
@@ -28,8 +28,9 @@
         ],
         [
             "conditionalAction",
+            "\"target\"",
             "\"attack\"",
-            "\"attack\""
+            "\"1\""
         ]
     ],
     "actionset": {
@@ -302,9 +303,17 @@
             "path": "w\u00fcrfelkingdom/timetilwurfel"
         },
         "wurfeln": {
-            "width": 212,
-            "height": 275,
-            "path": "w\u00fcrfelkingdom/wurfeln"
+            "width": 295,
+            "height": 305,
+            "path": "w\u00fcrfelkingdom/wurfeln",
+            "windowSize": {
+                "width": 1144,
+                "height": 2039
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "cadadada": {
             "width": 566,
@@ -404,6 +413,45 @@
             "windowSize": {
                 "width": 1141,
                 "height": 2030
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "nachstesKingdom": {
+            "width": 483,
+            "height": 165,
+            "path": "w\u00fcrfelkingdom/nachstesKingdom",
+            "windowSize": {
+                "width": 1144,
+                "height": 2039
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "newKingOpen": {
+            "width": 208,
+            "height": 199,
+            "path": "w\u00fcrfelkingdom/newKingOpen",
+            "windowSize": {
+                "width": 1144,
+                "height": 2039
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "giftClick": {
+            "width": 176,
+            "height": 134,
+            "path": "w\u00fcrfelkingdom/giftClick",
+            "windowSize": {
+                "width": 1144,
+                "height": 2039
             },
             "screenSize": {
                 "width": 3840,

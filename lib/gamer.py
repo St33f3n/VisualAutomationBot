@@ -1,3 +1,4 @@
+from operator import and_
 import queue
 import random
 from threading import local
@@ -193,18 +194,19 @@ class Gamer():
                 action (str): The name of the action to perform if the conditions are met.
                 confidence (float): The confidence level required to trigger the action.
         """
-        checklist = [None]*condition.length()
-        
+        checklist = [None]*len(condition)   
+
         for idx, e in enumerate(condition):
             if type(e) is tuple:
                 checklist[idx] = self.compareRessources(e)
             else:
-                currentPic = self.json_handler.getPictureData(e)
+                currentPic = self.json_handler.getPictureData(e)[2]
+                print(currentPic)
                 checklist[idx] = pyautogui.locateOnScreen(currentPic, region=self.area, grayscale=True, confidence=0.8) != None
 
-        if average(checklist) > confidence & self.playset.actionSets.get(action) != None:
+        if average(checklist) > confidence and self.playset.actionSets.get(action) != None:
             self.playset.actionSets.get(action).runActionset()
-        elif average(checklist) > confidence & self.playset.actionSets.get(action) == None:
+        elif average(checklist) > confidence and self.playset.actionSets.get(action) == None:
             print(f"No actionset found with name: {action}")
 
         else:    
