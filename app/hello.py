@@ -164,7 +164,7 @@ class Ui_MainWindow(object):
         self.tabWidget.addTab(self.gameplay_tab, "")
         MainWindow.setCentralWidget(self.centralwidget)
         self.menubar = QtWidgets.QMenuBar(MainWindow)
-        self.menubar.setGeometry(QtCore.QRect(0, 0, 847, 26))
+        self.menubar.setGeometry(QtCore.QRect(0, 0, 847, 23))
         self.menubar.setObjectName("menubar")
         self.menuFile = QtWidgets.QMenu(self.menubar)
         self.menuFile.setObjectName("menuFile")
@@ -184,7 +184,7 @@ class Ui_MainWindow(object):
         self.menubar.addAction(self.menuSettings.menuAction())
 
         self.retranslateUi(MainWindow)
-        self.tabWidget.setCurrentIndex(0)
+        self.tabWidget.setCurrentIndex(2)
         self.actionOpen.triggered.connect(MainWindow.openDir) # type: ignore
         self.createSaveButton.clicked.connect(MainWindow.createSave) # type: ignore
         self.openDirButton.clicked.connect(MainWindow.openDir) # type: ignore

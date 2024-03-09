@@ -185,10 +185,14 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.newSaveTextBox.show()
 
     def keyPressEvent(self, event):
-        if event.key() == Qt.Key_Delete:
-            selected_items = self.listWidget.selectedItems()
-            for item in selected_items:
-                self.listWidget.takeItem(self.listWidget.row(item))
+            if event.key() == Qt.Key_Delete:
+                selected_items = self.textlist.selectedItems()
+                if selected_items:
+                    for item in selected_items:
+                        self.textlist.takeItem(self.textlist.row(item))
+                self.textlist.clearSelection()
+            else:
+                super().keyPressEvent(event)
 
     # def dragEnterEvent(self, event):
     #     event.accept()
@@ -265,11 +269,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
             self.start_stopButton.setStyleSheet("background-color : red")
-            # self.com.gameLoop(True)
+            self.com.gameLoop(True)
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
-            # self.com.gameLoop(False)
+            self.com.gameLoop(False)
 
     # Create 
             
