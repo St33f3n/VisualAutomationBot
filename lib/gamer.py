@@ -1,7 +1,7 @@
 import queue
 import random
 from threading import local
-import pyautogui, json, os, keyboard, time, cv2
+import pyautogui, json, os, keyboard, time
 import win32api, win32con
 from .timers import Timers
 from .ocr import Ocr
@@ -209,12 +209,16 @@ class Gamer():
         currentRessources,  currentValue = self.json_handler.getRessourceData(ressource)
         
         match comperator:
+
             case 0:
                 return currentValue>value
+            
             case 1:
                 return currentRessources<value
+            
             case 2:
                 return currentValue==value
+            
             case _:
                 print("Unknown Comperator")
                 return None
