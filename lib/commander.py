@@ -47,6 +47,7 @@ class Commander():
 
     def playGame(self):
         """▶️ Play a game from the game queue."""
+        print("Start Game")
         try:
             current = self.gameQueue.get()
             cQueue = current.getActions()

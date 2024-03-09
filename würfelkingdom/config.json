@@ -18,7 +18,7 @@
     },
     "playset": [
         [
-            "clickIfPicture(img, img)",
+            "clickIfPicture",
             "\"wurfeln\"",
             "\"wurfeln\""
         ]
@@ -26,7 +26,7 @@
     "actionset": {
         "MainGame": [
             [
-                "clickIfPicture(img, img)",
+                "clickIfPicture",
                 "\"wurfeln\"",
                 "\"wurfeln\""
             ]
