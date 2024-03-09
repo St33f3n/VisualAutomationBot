@@ -36,10 +36,12 @@
             "\"gast\"",
             "\"money\"",
             "\"AAD\"",
-            "\"\"",
             "\"sggasfhg\"",
             "\"num2\"",
-            "\"Test\""
+            "\"Test\"",
+            "\"AAD\"",
+            "\"energieLeiste\"",
+            "\"money\""
         ]
     ],
     "actionset": {
@@ -112,14 +114,30 @@
     },
     "pictures": {
         "1x": {
-            "width": 81,
-            "height": 91,
-            "path": "w\u00fcrfelkingdom/1x.PNG"
+            "width": 108,
+            "height": 96,
+            "path": "w\u00fcrfelkingdom/1x",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "2x": {
-            "width": 88,
-            "height": 86,
-            "path": "w\u00fcrfelkingdom/2x.PNG"
+            "width": 111,
+            "height": 101,
+            "path": "w\u00fcrfelkingdom/2x",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "attack": {
             "width": 124,
@@ -127,44 +145,108 @@
             "path": "w\u00fcrfelkingdom/attack.png"
         },
         "baumenu": {
-            "width": 171,
-            "height": 162,
-            "path": "w\u00fcrfelkingdom/baumenu.PNG"
+            "width": 162,
+            "height": 165,
+            "path": "w\u00fcrfelkingdom/baumenu",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "cancel": {
-            "width": 70,
-            "height": 55,
-            "path": "w\u00fcrfelkingdom/cancel.png"
+            "width": 100,
+            "height": 98,
+            "path": "w\u00fcrfelkingdom/cancel",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "clickandhold": {
-            "width": 317,
-            "height": 302,
-            "path": "w\u00fcrfelkingdom/clickandhold.PNG"
+            "width": 340,
+            "height": 332,
+            "path": "w\u00fcrfelkingdom/clickandhold",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "einsammeln": {
-            "width": 309,
-            "height": 88,
-            "path": "w\u00fcrfelkingdom/einsammeln.png"
+            "width": 504,
+            "height": 155,
+            "path": "w\u00fcrfelkingdom/einsammeln",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "energieBlitz": {
-            "width": 55,
-            "height": 100,
-            "path": "w\u00fcrfelkingdom/energieBlitz.PNG"
+            "width": 51,
+            "height": 63,
+            "path": "w\u00fcrfelkingdom/energieBlitz",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "energieLeiste": {
-            "width": 579,
-            "height": 100,
-            "path": "w\u00fcrfelkingdom/energieLeiste.PNG"
+            "width": 586,
+            "height": 83,
+            "path": "w\u00fcrfelkingdom/energieLeiste",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "gast": {
-            "width": 229,
-            "height": 115,
-            "path": "w\u00fcrfelkingdom/gast.PNG"
+            "width": 237,
+            "height": 109,
+            "path": "w\u00fcrfelkingdom/gast",
+            "windowSize": {
+                "width": 1161,
+                "height": 2062
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "geldbaumenu": {
-            "width": 90,
-            "height": 86,
-            "path": "w\u00fcrfelkingdom/geldbaumenu.PNG"
+            "width": 69,
+            "height": 62,
+            "path": "w\u00fcrfelkingdom/geldbaumenu",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "gift": {
             "width": 222,
@@ -177,9 +259,17 @@
             "path": "w\u00fcrfelkingdom/gratis.png"
         },
         "money": {
-            "width": 144,
-            "height": 133,
-            "path": "w\u00fcrfelkingdom/money.PNG"
+            "width": 153,
+            "height": 135,
+            "path": "w\u00fcrfelkingdom/money",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "nachstesKongigreich": {
             "width": 405,
@@ -187,19 +277,43 @@
             "path": "w\u00fcrfelkingdom/nachstesKongigreich.PNG"
         },
         "rauben": {
-            "width": 145,
-            "height": 178,
-            "path": "w\u00fcrfelkingdom/rauben.png"
+            "width": 227,
+            "height": 287,
+            "path": "w\u00fcrfelkingdom/rauben",
+            "windowSize": {
+                "width": 1161,
+                "height": 2062
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "shoot": {
-            "width": 436,
-            "height": 537,
-            "path": "w\u00fcrfelkingdom/shoot.png"
+            "width": 842,
+            "height": 887,
+            "path": "w\u00fcrfelkingdom/shoot",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "target": {
-            "width": 96,
-            "height": 97,
-            "path": "w\u00fcrfelkingdom/target.png"
+            "width": 159,
+            "height": 202,
+            "path": "w\u00fcrfelkingdom/target",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
         },
         "timetilwurfel": {
             "width": 434,
@@ -231,6 +345,58 @@
             "windowSize": {
                 "width": 1652,
                 "height": 897
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "tar": {
+            "width": 202,
+            "height": 233,
+            "path": "w\u00fcrfelkingdom/tar",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "take": {
+            "width": 468,
+            "height": 72,
+            "path": "w\u00fcrfelkingdom/take",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "tar2": {
+            "width": 188,
+            "height": 224,
+            "path": "w\u00fcrfelkingdom/tar2",
+            "windowSize": {
+                "width": 1156,
+                "height": 2060
+            },
+            "screenSize": {
+                "width": 3840,
+                "height": 2160
+            }
+        },
+        "gifts": {
+            "width": 172,
+            "height": 165,
+            "path": "w\u00fcrfelkingdom/gifts",
+            "windowSize": {
+                "width": 1161,
+                "height": 2062
             },
             "screenSize": {
                 "width": 3840,
