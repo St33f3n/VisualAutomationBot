@@ -70,7 +70,7 @@ class Commander():
         """🔍 Scan for new tasks and manage the game queue."""
         if self.queueLength == 0:
             print("No new tasks, choosing random Task!")
-            self.queueGamer(self.gamers.keys[randint(0,self.gamers.length())])
+            self.queueGamer(list(self.gamers.keys())[randint(0,len(self.gamers))])
         elif self.queueLength < 10:
             print("Getting next Task")
             self.queueGamer(self.nextTask())
