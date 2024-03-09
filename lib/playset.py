@@ -1,3 +1,4 @@
+import enum
 from .jsonHandler import JsonHandler
 from queue import Queue
 from .actionset import ActionSet
@@ -45,8 +46,8 @@ class Playset():
         string = f'This is the playeset of:{self.name}\n'
         for idx, i in enumerate(self.functionList):
             string = f'{string}The {idx}. Function: {self.name}.{i[0]}('
-            for e in i[1:]:
-                if e != i[len(i)-1]:
+            for arg, e in enumerate(i[1:]):
+                if arg != len(i)-2:
                     string= f'{string}{e}, '
                 else:
                     string= f'{string}{e})\n'
@@ -62,7 +63,7 @@ class Playset():
                 function.append(e)
             self.functionList.append(function)
 
-    def convertRawJson(rawJson: list):
+    def convertRawJson(self, rawJson: list):
         """
         Converts raw JSON data to a function list.
 
@@ -101,14 +102,14 @@ class Playset():
             evaluationStr = f'self.playset.game.{evaluationStr})'    
         else:
             evaluationStr = f'{list[0]}('
-            for e in list[1:]:
-                if e is not list[-1]:
+            for arg, e in enumerate(list[1:]):
+                if arg is not len(list)-2:
                     evaluationStr = evaluationStr + e + ", "
                 else:
                     evaluationStr = evaluationStr + e
                     
             evaluationStr = f'self.gamers.get("{name}").{evaluationStr})'
-    
+            print(evaluationStr)
         return evaluationStr
 
     def actOnIdx(self, idx: int):
@@ -143,8 +144,10 @@ class Playset():
         Initializes action sets.
         """
         for e in self.rawActionsets.keys():
+            print(e)
+            print(self.rawActionsets)
             actionset = ActionSet(e, self.convertRawJson(self.rawActionsets.get(e)), self)
-            self.actionLists.update(e, actionset)
+            self.actionSets.update({e: actionset})
         
 
 
