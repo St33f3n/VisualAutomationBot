@@ -46,9 +46,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.screenSize = pyautogui.size()
         self.comboBoxselected_item = None
 
-        print("game running: ",os.system("service vmmem status"))
-
-
         self.newSaveTextBox.hide()
         # self.setAcceptDrops(True)
 
