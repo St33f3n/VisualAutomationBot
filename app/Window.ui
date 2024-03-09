@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>0</number>
+     <number>2</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -425,7 +425,7 @@
      <x>0</x>
      <y>0</y>
      <width>847</width>
-     <height>26</height>
+     <height>23</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">
@@ -673,5 +673,6 @@
   <slot>createSave()</slot>
   <slot>selectFrameSize()</slot>
   <slot>handleComboBoxSelection()</slot>
+  <slot>removeSel()</slot>
  </slots>
 </ui>
