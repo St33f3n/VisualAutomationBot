@@ -1,5 +1,5 @@
 from PyQt5 import QtWidgets
-from PyQt5.QtWidgets import QApplication, QFileDialog, QPushButton, QWidget
+from PyQt5.QtWidgets import QApplication, QFileDialog, QPushButton, QListWidgetItem
 from PyQt5.QtCore import Qt, QMimeData, QObject
 from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent, QPixmap, QIcon
 import pyautogui
@@ -40,6 +40,8 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setupUi(self)
         self.jHandler = None
         self.com = Commander()
+
+
         self.create_folder_name = None
         self.create_img = None
         self.windowSize = None
@@ -47,6 +49,9 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.comboBoxselected_item = None
 
         self.newSaveTextBox.hide()
+
+        self.functionWidget.mouseMoveEvent = self.mouseMoveEvent
+
         # self.setAcceptDrops(True)
 
         # self.ddButton = QPushButton('Drag me', self)
@@ -86,10 +91,19 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             # Drag and drop boxes
             pic = self.jHandler.getData('pictures').keys()
             self.pictureWidget.addItems(pic)
-            self.functionWidget.addItems(functions)
+            # self.functionWidget.addItems(functions)
+
+           
+
+            for function, description in functions.items():
+                item = QListWidgetItem(function)
+                item.setToolTip(f"{function}: {description}")  # Set tooltip for each item
+                self.functionWidget.addItem(item)
+            
 
             actionset_keys = self.jHandler.getData('actionset').keys()
             self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
+
             # Init ComboBox
 
             dropDown = ["playset"]
@@ -201,6 +215,14 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
                 self.textlist.clearSelection()
             else:
                 super().keyPressEvent(event)
+
+    def mouseMoveEvent(self, event):
+        item = self.functionWidget.itemAt(event.pos())
+        if item:
+            tooltip = f"Item: {item.text()}"
+            self.functionWidget.setToolTip(tooltip)
+        else:
+            self.functionWidget.setToolTip("")
 
     # def dragEnterEvent(self, event):
     #     event.accept()
