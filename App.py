@@ -254,10 +254,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if os.path.exists(current_dir + "/config.json") == True:
             folder_name = os.path.basename(current_dir)
 
+            self.loadGameButton.setText(folder_name)
+
             self.com.addGame(folder_name)
             print(self.com)
             self.start_stopButton.setEnabled(True)
             self.killButton.setEnabled(True)
+        
 
     def selectArea(self):
         pass
@@ -282,7 +285,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
         if os.path.exists(current_dir) == True:
             self.create_folder_name = os.path.basename(current_dir)
-            self.loadGameButton.setText(self.create_folder_name)
+            self.selectGameButton.setText(self.create_folder_name)
             self.jHandler = JsonHandler(self.create_folder_name)
 
     def selectFrameSize(self):
