@@ -93,6 +93,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.pictureWidget.addItems(pic)
             # self.functionWidget.addItems(functions)
 
+    
            
 
             for function, description in functions.items():
