@@ -48,6 +48,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.screenSize = pyautogui.size()
         self.comboBoxselected_item = None
         self.thread_var = None
+        self.game_loop_thread = None
         self.newSaveTextBox.hide()
 
         # self.setAcceptDrops(True)
