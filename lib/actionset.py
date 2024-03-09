@@ -17,6 +17,7 @@ class ActionSet():
 
     def __init__(self, name, data, playset):
         self.name = name
+        self.execPlace = "self.playset.game"
         self.functionList = data
         self.playset = playset
         self.instructions = self.initInstructionQueue()
@@ -26,7 +27,7 @@ class ActionSet():
         """🛠️ Initialize the instruction queue."""
         out = Queue()
         for e in self.functionList:
-            out.put(self.playset.buildEvalString(self.playset.name, e))
+            out.put(self.playset.buildEvalString(self.playset.name, e, execPlace=self.execPlace))
         return out
     
     def runActionset(self):

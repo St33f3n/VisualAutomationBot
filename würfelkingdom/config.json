@@ -2,7 +2,7 @@
     "config": {},
     "ressource": {
         "money": {
-            "value": "",
+            "value": "144:762\n",
             "position": {
                 "x": 350,
                 "y": 20
@@ -27,10 +27,30 @@
             "\"wurfeln\""
         ],
         [
-            "conditionalAction",
+            "clickIfPicture",
             "\"target\"",
-            "\"attack\"",
-            "\"1\""
+            "\"target\""
+        ],
+        [
+            "dragFromPicture",
+            "\"catapult\"",
+            "\"300\"",
+            "\"180\""
+        ],
+        [
+            "clickIfPicture",
+            "\"einsammeln\"",
+            "\"einsammeln\""
+        ],
+        [
+            "clickIfPicture",
+            "\"rauben\"",
+            "\"rauben\""
+        ],
+        [
+            "clickIfPicture",
+            "\"gratis\"",
+            "\"gratis\""
         ]
     ],
     "actionset": {
@@ -48,16 +68,18 @@
                 "\"target\""
             ],
             [
-                "wait"
+                "wait",
+                "\"long\""
             ],
             [
                 "dragFromPicture",
                 "\"catapult\"",
-                "\"100\"",
-                "\"270\""
+                "\"300\"",
+                "\"180\""
             ],
             [
-                "wait"
+                "wait",
+                "\"long\""
             ],
             [
                 "clickIfPicture",

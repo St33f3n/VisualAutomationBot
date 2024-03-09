@@ -27,9 +27,11 @@ class Commander():
 
     def generateTimer(self, e):
         """⏱️ Generate timers for a game instance."""
-        stop = Timers(1,3)
+        stop = Timers(5,10)
+        long = Timers(10,20)
         key = Timers(0.5, 2)
-        click = Timers(0.1, 0.6)
+        click = Timers(0.1, 0.2)
+        e.addTimer('long', long)
         e.addTimer('stop', stop)
         e.addTimer('key', key)
         e.addTimer('click', click)

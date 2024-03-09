@@ -2,13 +2,13 @@ from operator import and_
 import queue
 import random
 from threading import local
+import numpy
 import pyautogui, json, os, keyboard, time
 import win32api, win32con
 from .timers import Timers
 from .ocr import Ocr
 from .jsonHandler import JsonHandler 
 from .playset import Playset
-from numpy import average
 import math
 class Gamer():
     """🎮 Represents a gamer entity.
@@ -117,7 +117,7 @@ class Gamer():
     def dragMouse(self, start, end):
         """🖱️ Drag the mouse from start to end."""
         win32api.SetCursorPos(start)
-        pyautogui.dragTo(end.x, end.y, 1, pyautogui.easeOutQuad, button='left')
+        pyautogui.dragTo(end[0], end[1], 1, pyautogui.easeOutQuad, button='left')
 
     def dragPictureToPicture(self, key1, key2):
         """🖱️ Drag from the location of key1 picture to the location of key2 picture."""
@@ -125,8 +125,10 @@ class Gamer():
         end = self.picToCoordinates(key2)
         self.dragMouse(start, end)
 
-    def dragFromPicture(self, key, distance: int, direction:int):
+    def dragFromPicture(self, key, distance, direction):
         """🖱️ Drag the mouse from the location of a picture."""
+        distance = float(distance)
+        direction = float(direction)-90
         target = self.picToCoordinates(key)
         targetx, targety = target
         angle = math.radians(direction)
@@ -183,9 +185,9 @@ class Gamer():
             # print(newInp)
             self.json_handler.update("ressource" , (key, value))
 
-    def wait(self):
+    def wait(self, key):
         """⏸️ Pause execution based on stop timer."""
-        self.timer.get('stop').hPause()
+        self.timer.get(key).hPause()
 
     def conditionalAction(self, condition, action, confidence):
         """🛑 Perform an action based on condition.
@@ -194,6 +196,7 @@ class Gamer():
                 action (str): The name of the action to perform if the conditions are met.
                 confidence (float): The confidence level required to trigger the action.
         """
+        confidence = float(confidence)
         checklist = [None]*len(condition)   
 
         for idx, e in enumerate(condition):
@@ -203,10 +206,12 @@ class Gamer():
                 currentPic = self.json_handler.getPictureData(e)[2]
                 print(currentPic)
                 checklist[idx] = pyautogui.locateOnScreen(currentPic, region=self.area, grayscale=True, confidence=0.8) != None
-
-        if average(checklist) > confidence and self.playset.actionSets.get(action) != None:
+        print(checklist)
+        average = numpy.mean([1 if item else 0 for item in checklist])
+        print(average)
+        if average >= confidence and self.playset.actionSets.get(action) != None:
             self.playset.actionSets.get(action).runActionset()
-        elif average(checklist) > confidence and self.playset.actionSets.get(action) == None:
+        elif average > confidence and self.playset.actionSets.get(action) == None:
             print(f"No actionset found with name: {action}")
 
         else:    

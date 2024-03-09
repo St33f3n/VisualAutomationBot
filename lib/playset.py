@@ -81,7 +81,7 @@ class Playset():
             out.append(function)
         return out
     
-    def buildEvalString(self, name: str, list: list):
+    def buildEvalString(self, name: str, list: list, execPlace: str=""):
         """
         Builds an evaluation string for function execution.
 
@@ -92,6 +92,9 @@ class Playset():
         Returns:
             str: Evaluation string.
         """
+        if execPlace == "":
+            execPlace = f"self.gamers.get('{name}')"
+
         if list[0] == "conditionalAction":
             evaluationStr = f'{list[0]}(['
             for e in list[1:-3]:
@@ -99,7 +102,7 @@ class Playset():
             evaluationStr = evaluationStr + list[-3] + "], "
             evaluationStr = evaluationStr + list[-2] + ", "
             evaluationStr = evaluationStr + list[-1] 
-            evaluationStr = f'self.gamers.get("{name}").{evaluationStr})'    
+            evaluationStr = f'{execPlace}.{evaluationStr})'    
         else:
             evaluationStr = f'{list[0]}('
             for arg, e in enumerate(list[1:]):
@@ -108,7 +111,7 @@ class Playset():
                 else:
                     evaluationStr = evaluationStr + e
                     
-            evaluationStr = f'self.gamers.get("{name}").{evaluationStr})'
+            evaluationStr = f'{execPlace}.{evaluationStr})'
             print(evaluationStr)
         return evaluationStr
 
