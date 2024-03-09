@@ -292,24 +292,23 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     def kill(self):
         pass
 
-    def start_game_loop(com):
-        com.gameLoop(True)
-
-    def stop_game_loop(com):
-        com.gameLoop(False)
-
     def start_stop(self):
         if self.start_stopButton.isChecked():
             self.start_stopButton.setText("STOP") 
             self.start_stopButton.setStyleSheet("background-color : red")
+            # Check if a previous thread is running and join it to ensure it's finished
+            if self.game_loop_thread and self.game_loop_thread.is_alive():
+                self.game_loop_thread.join()
+            # Start a new thread for the game loop
             self.game_loop_thread = threading.Thread(target=self.start_game_loop, args=(self.com,))
             self.game_loop_thread.start()
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
-            if hasattr(self, 'game_loop_thread') and self.game_loop_thread.is_alive():
-                stop_thread = threading.Thread(target=self.stop_game_loop, args=(self.com,))
-                stop_thread.start()
+            # Check if a previous thread is running and join it to ensure it's finished
+            if self.game_loop_thread and self.game_loop_thread.is_alive():
+                self.stop_game_loop(self.com)  # Stop the game loop
+                self.game_loop_thread.join()
 
     # Create 
             
