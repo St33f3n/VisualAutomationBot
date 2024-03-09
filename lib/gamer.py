@@ -67,6 +67,8 @@ class Gamer():
                 if keyboard.read_key() == 'w':
                     upperEdge = pyautogui.position()
                     break
+                if keyboard.read_key() == 'q':
+                    return
                 
                 print(".", " ")
 
@@ -76,6 +78,8 @@ class Gamer():
                 if keyboard.read_key() == 'w':
                     lowerEdge = pyautogui.position()
                     break
+                if keyboard.read_key() == 'q':
+                    return
                 
                 print(".", " ")
 
