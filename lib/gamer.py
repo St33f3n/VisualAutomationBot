@@ -10,6 +10,24 @@ from .playset import Playset
 from numpy import average
 import math
 class Gamer():
+    """🎮 Represents a gamer entity.
+
+    Args:
+        name (str): The name of the gamer.
+
+    Attributes:
+        name (str): The name of the gamer.
+        pos (dict): The position of the command area.
+        area (tuple): The coordinates of the command area.
+        uL (tuple): Upper-left coordinates of the command area.
+        uR (tuple): Upper-right coordinates of the command area.
+        dL (tuple): Lower-left coordinates of the command area.
+        dR (tuple): Lower-right coordinates of the command area.
+        timer (dict): A dictionary containing timers.
+        json_handler (JsonHandler): The JSON handler for the gamer.
+        playset (Playset): The playset associated with the gamer.
+    """
+
     def __init__(self, name):
         self.name = name
         self.pos = self.getCommandArea()
@@ -24,6 +42,7 @@ class Gamer():
         self.playset = Playset(self.json_handler, name, self)
 
     def __str__(self):
+        """📜 Returns a string representation of the gamer."""
         string = f'Game: {self.name}\nThe controlled Area is:\nupperLeft({self.uL}) | upperRight({self.uR})\nlowerLeft({self.uL}) | lowerRight({self.uR})\n'
         string = f'{string}It has the timers:\n'
         for e in self.timer.keys():
@@ -32,13 +51,16 @@ class Gamer():
         return string
         
     def addTimer(self, key ,timer : Timers):
+        """⏱️ Add a timer to the gamer."""
         self.timer.update({key:timer})
 
     def getName(self):
+        """🆔 Get the name of the gamer."""
         return self.name
 
     @staticmethod
     def getCommandArea():
+        """🖱️ Get the command area coordinates."""
         print("Select the upper left edge on wich you want to start the bot.\nPress w to capture the edge.")
         while True:
             if keyboard.read_key() == 'w':
@@ -66,6 +88,7 @@ class Gamer():
 
 
     def getActions(self):
+        """🎮 Get the actions of the gamer."""
         if self.playset.actions.empty():
             self.playset.queuePlayset()
             return self.playset.getQueue()
@@ -74,6 +97,7 @@ class Gamer():
         
 
     def simpleClick(self, x, y):
+        """🖱️ Perform a simple click action."""
         if x in range(self.uL[0],self.uR[0]) and y in range(self.uL[1],self.dR[1]):
             win32api.SetCursorPos((x,y))
             win32api.mouse_event(win32con.MOUSEEVENTF_LEFTDOWN,0,0)
@@ -83,15 +107,18 @@ class Gamer():
             print("out of window")
 
     def dragMouse(self, start, end):
+        """🖱️ Drag the mouse from start to end."""
         win32api.SetCursorPos(start)
         pyautogui.dragTo(end.x, end.y, 1, pyautogui.easeOutQuad, button='left')
 
     def dragPictureToPicture(self, key1, key2):
+        """🖱️ Drag from the location of key1 picture to the location of key2 picture."""
         start = self.picToCoordinates(key1)
         end = self.picToCoordinates(key2)
         self.dragMouse(start, end)
 
     def dragFromPicture(self, key, distance: int, direction:int):
+        """🖱️ Drag the mouse from the location of a picture."""
         target = self.picToCoordinates(key)
         targetx, targety = target
         angle = math.radians(direction)
@@ -99,14 +126,14 @@ class Gamer():
         self.dragMouse(target, goal)
 
     def keyPress(self, key):
+        """⌨️ Simulate a key press."""
         pyautogui.keyDown(key)
         self.timer.get("key").hPause()
         pyautogui.keyUp(key)
 
     def clickIfPicture(self, key1, key2):
-        """key1 = Ziel das erkannt werden soll\n
-        key2 = Ziel auf das gedrückt wird"""
-
+        """🖱️ Click on key2 if key1 picture is found."""
+ 
         _, _, img = self.json_handler.getPictureData(key1)
         if pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.8) != None:
             target = self.picToCoordinates(key2)
@@ -120,6 +147,7 @@ class Gamer():
     
         
     def picToCoordinates(self, key):
+        """📸 Convert picture key to coordinates."""
         width , height, img = self.json_handler.getPictureData(key)
         location = pyautogui.locateOnScreen(img, region=self.area, grayscale=True, confidence=0.8)
         if location == None:
@@ -130,6 +158,7 @@ class Gamer():
     
     # TODO regular automatic Checkup 
     def locateRessources(self, key):
+        """🔍 Locate resources using OCR."""
         width , height, img = self.json_handler.getPictureData(key)
         v, sizeX, sizeY = self.json_handler.getRessourceData(key)        
         
@@ -147,9 +176,16 @@ class Gamer():
             self.json_handler.update("ressource" , (key, value))
 
     def wait(self):
+        """⏸️ Pause execution based on stop timer."""
         self.timer.get('stop').hPause()
 
     def conditionalAction(self, condition, action, confidence):
+        """🛑 Perform an action based on condition.
+               Args:
+                condition (list): A list of conditions to evaluate.
+                action (str): The name of the action to perform if the conditions are met.
+                confidence (float): The confidence level required to trigger the action.
+        """
         checklist = [None]*condition.length()
         
         for idx, e in enumerate(condition):
@@ -168,6 +204,7 @@ class Gamer():
             print("To few hits in the condition")
 
     def compareRessources(self, e : tuple):
+        """🔁 Compare resources."""
         ressource, comperator, value = e
         currentRessources,  currentValue = self.json_handler.getRessourceData(ressource)
         
