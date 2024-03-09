@@ -99,7 +99,7 @@ class Playset():
             evaluationStr = evaluationStr + list[-3] + "], "
             evaluationStr = evaluationStr + list[-2] + ", "
             evaluationStr = evaluationStr + list[-1] 
-            evaluationStr = f'self.playset.game.{evaluationStr})'    
+            evaluationStr = f'self.gamers.get("{name}").{evaluationStr})'    
         else:
             evaluationStr = f'{list[0]}('
             for arg, e in enumerate(list[1:]):
