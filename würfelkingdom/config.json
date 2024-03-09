@@ -16,20 +16,19 @@
             }
         }
     },
-    "playset": [],
+    "playset": [
+        [
+            "clickIfPicture(img, img)",
+            "\"wurfeln\"",
+            "\"wurfeln\""
+        ]
+    ],
     "actionset": {
         "MainGame": [
             [
                 "clickIfPicture(img, img)",
                 "\"wurfeln\"",
                 "\"wurfeln\""
-            ],
-            [
-                "conditionalAction(n, 2)"
-            ],
-            [
-                "compareRessources((1,1,1))",
-                "\"money\""
             ]
         ]
     },
