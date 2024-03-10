@@ -14,8 +14,6 @@ Im Create-Menü wird ebenfalls ein Dateiauswahldialog verwendet, jedoch mit eine
 
 ## Playset-Builder 
 
-
-
 Im Builder-Menü werden alle Action- und Playsets geladen und können dort bearbeitet oder neue erstellt werden. Vor dem Anzeigen eines Sets muss erneut über einen Dateiauswahldialog das Spiel gewählt werden. Auf der linken Seite befindet sich eine Box, in der die Sets angezeigt werden. Oberhalb dieser Box befindet sich eine Dropdown-Liste, aus der ausgewählt wird, welches Set gerade in der Box angezeigt werden soll.
 
 In der Mitte und auf der rechten Seite befindet sich jeweils eine weitere Boxen. Die mittlere enthält alle Funktionen und erstellt Actionsets, während die rechte Box alle verfügbaren Bilder enthält. Unterhalb dieser beiden Boxen befindet sich eine Textbox mit einem zugehörigen Button zum Hinzufügen von weiteren Elementen.
