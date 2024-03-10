@@ -1,6 +1,6 @@
 from PyQt5 import QtWidgets
 from PyQt5.QtWidgets import QApplication, QFileDialog, QPushButton, QListWidgetItem
-from PyQt5.QtCore import Qt, QMimeData, QObject
+from PyQt5.QtCore import Qt, QMimeData, QObject, pyqtSignal, pyqtSlot, QThread
 from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent, QPixmap, QIcon
 import pyautogui
 from app.hello import Ui_MainWindow  # Import Ui_MainWindow from the generated module
@@ -11,29 +11,6 @@ from lib.jsonHandler import JsonHandler, functions
 from PIL import Image
 import threading
 
-# class DragHandler(QObject):
-#     def __init__(self, widget):
-#         super().__init__(widget)
-#         self.widget = widget
-
-#     def setupDraggableButton(self, button):
-#         button.installEventFilter(self)
-
-#     def eventFilter(self, obj, event):
-#         if obj == self.widget.ddButton:
-#             if event.type() == event.MouseButtonPress:
-#                 self.drag_start_position = event.pos()
-#             elif event.type() == event.MouseMove:
-#                 if hasattr(self, 'drag_start_position') and (event.buttons() & Qt.LeftButton):
-#                     drag = QDrag(self.widget.ddButton)
-#                     mime_data = QMimeData()
-#                     drag.setMimeData(mime_data)
-
-#                     drag.setHotSpot(event.pos() - self.drag_start_position)
-
-#                     drag.exec_(Qt.MoveAction)
-
-#         return super().eventFilter(obj, event)
 class App(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(App, self).__init__(parent)
@@ -47,30 +24,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.windowSize = None
         self.screenSize = pyautogui.size()
         self.comboBoxselected_item = None
+        
         self.thread_var = None
-        self.game_loop_thread = None
+
         self.newSaveTextBox.hide()
 
-        # self.setAcceptDrops(True)
-
-        # self.ddButton = QPushButton('Drag me', self)
-        # self.ddButton.setGeometry(50, 50, 100, 50)
-
-        # # Initialize DragHandler and set up drag for ddButton
-        # self.dragHandler = DragHandler(self)
-        # self.dragHandler.setupDraggableButton(self.ddButton)
-    
-    # def openConfig(self):
-    #     if self.jHandler:
-    #         item = sum(self.jHandler.getData('playset'), [])
-    #         print(item)
-    #         current_text = ""
-    #         for i in item:
-    #             current_text += i + "\n"
-    #         self.textlist.setText(current_text)
-    #         self.openConfigButton.setText("Config Loaded")
-    #     else:
-    #         self.openConfigButton.setText("No Config Found")
 
 
     def openDir(self):
@@ -275,47 +233,43 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
   
 
     # Play 
+            
+            
+    def kill(self):
+        pass
 
     def loadGame(self):
         options = QFileDialog.Options()
-        current_dir = QFileDialog.getExistingDirectory(self,"QFileDialog.getExistingDirectory()", "", options=options)
+        current_dir = QFileDialog.getExistingDirectory(self, "QFileDialog.getExistingDirectory()", "", options=options)
         if os.path.exists(current_dir + "/config.json") == True:
             folder_name = os.path.basename(current_dir)
 
             self.loadGameButton.setText(folder_name)
 
-            self.thread_var = threading.Thread(target=self.com.addGame, args=(folder_name,))
-            self.thread_var.start()
+            self.com.addGame(folder_name)
+
             self.start_stopButton.setEnabled(True)
             self.killButton.setEnabled(True)
-        
 
-    def kill(self):
-        pass
+    def start_game_loop(self):
+        self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+        self.game_thread.start()
 
-    def start_game_loop(self, com):
-        com.gameLoop(True)
-
-    def stop_game_loop(self, com):
-        com.gameLoop(False)
+    def stop_game_loop(self):
+        self.com.gameLoop(False)
+        if self.game_thread and self.game_thread.is_alive():
+            self.game_thread.join()
 
     def start_stop(self):
         if self.start_stopButton.isChecked():
-            self.start_stopButton.setText("STOP") 
+            self.start_stopButton.setText("STOP")
             self.start_stopButton.setStyleSheet("background-color : red")
-            # Check if a previous thread is running and join it to ensure it's finished
-            if self.game_loop_thread and self.game_loop_thread.is_alive():
-                self.game_loop_thread.join()
-            # Start a new thread for the game loop
-            self.game_loop_thread = threading.Thread(target=self.start_game_loop, args=(self.com,))
-            self.game_loop_thread.start()
+            self.start_game_loop()
         else:
             self.start_stopButton.setText("Start")
             self.start_stopButton.setStyleSheet("background-color : lightgrey")
-            # Check if a previous thread is running and join it to ensure it's finished
-            if self.game_loop_thread and self.game_loop_thread.is_alive():
-                self.stop_game_loop(self.com)  # Stop the game loop
-                self.game_loop_thread.join()
+            self.stop_game_loop()
+
 
     # Create 
             

@@ -183,7 +183,7 @@ class Gamer():
             print("Value", value)
             # newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
             # print(newInp)
-            self.json_handler.update("ressource" , (key, value))
+            self.json_handler.valueUpdate("ressource" , (key, value))
 
     def wait(self, key):
         """⏸️ Pause execution based on stop timer."""
