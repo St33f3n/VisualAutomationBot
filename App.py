@@ -25,8 +25,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.screenSize = pyautogui.size()
         self.comboBoxselected_item = None
         
-        self.thread_var = None
-
         self.newSaveTextBox.hide()
 
 
@@ -188,19 +186,19 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     #     self.ddButton.move(position)
     #     event.accept()
     
-    def add(self):
-        selected_item = self.pictureWidget.currentItem()
-        if selected_item is not None:
-            current_text = self.textlist.text()
-            self.textlist.setText(current_text + f"\"{selected_item.text()}\"\n")
-        self.pictureWidget.clearSelection()
-        self.pictureWidget.setCurrentItem(None)
+    # def add(self):
+    #     selected_item = self.pictureWidget.currentItem()
+    #     if selected_item is not None:
+    #         current_text = self.textlist.text()
+    #         self.textlist.setText(current_text + f"\"{selected_item.text()}\"\n")
+    #     self.pictureWidget.clearSelection()
+    #     self.pictureWidget.setCurrentItem(None)
 
-    def deleteLast(self):
-        current_text = self.textlist.text()
-        lines = current_text.splitlines()
-        resultText = '\n'.join(lines[:-1])
-        self.textlist.setText(resultText + "\n")
+    # def deleteLast(self):
+    #     current_text = self.textlist.text()
+    #     lines = current_text.splitlines()
+    #     resultText = '\n'.join(lines[:-1])
+    #     self.textlist.setText(resultText + "\n")
 
 
     # All Gamer Button Functions 
@@ -216,25 +214,15 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     #     current_text = self.textlist.text()
     #     self.textlist.setText(current_text + "clickOnPicture\n")
 
-    # # Listen on Keypress and add 
+    # Listen on Keypress and add 
     def keyPress(self):
         current_text = self.valueTextBox.text()
         if current_text != "":
             self.textlist.addItems([current_text])
             self.valueTextBox.setText("")
 
-    # def clickIfPicture(self):
-    #     current_text = self.textlist.text()
-    #     self.textlist.setText(current_text + "clickIfPicture\n")
-
-    # def locateRessource(self):
-    #     current_text = self.textlist.text()
-    #     self.textlist.setText(current_text + "locateRessource\n")
-  
-
     # Play 
-            
-            
+
     def kill(self):
         pass
 

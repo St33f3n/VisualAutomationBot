@@ -2,7 +2,7 @@ import os
 import json
 from PIL import Image
 
-startup = {"config": {}, "playset": [], "actionset" : {}, "pictures": {}}
+startup = {"config": {}, "ressource": {}, "playset": [], "actionset" : {}, "pictures": {}}
 # functions = ["keyPress", "compareRessources((1,1,1))",  "clickIfPicture(img, img)", "locateRessources(img)", "wait()", "conditionalAction(n, 2)"] # dragMouse 
 functions = {
     "keyPress": "Add key with text box",
