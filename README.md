@@ -16,7 +16,7 @@
 - Image Recognition Algorythm
 
 ### Datenspeicherung und Benutzeroberfläche
-#### JSON - Permanente Daten
+#### [JSON - Permanente Daten](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/JSON.md)
 #### Benutzeroberfläche
 ##### Hauptmenü
 ##### Screenshot-Tool
