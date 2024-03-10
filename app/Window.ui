@@ -34,7 +34,7 @@
      </rect>
     </property>
     <property name="currentIndex">
-     <number>2</number>
+     <number>0</number>
     </property>
     <property name="movable">
      <bool>false</bool>
@@ -195,7 +195,7 @@
       </property>
      </widget>
     </widget>
-    <widget class="QWidget" name="gameplay_tab">
+    <widget class="QWidget" name="build_tab">
      <property name="sizePolicy">
       <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
        <horstretch>0</horstretch>
@@ -203,7 +203,7 @@
       </sizepolicy>
      </property>
      <attribute name="title">
-      <string>Gameplay</string>
+      <string>Builder</string>
      </attribute>
      <widget class="QPushButton" name="openDirButton">
       <property name="geometry">
@@ -388,7 +388,7 @@
      <x>0</x>
      <y>0</y>
      <width>847</width>
-     <height>29</height>
+     <height>26</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuFile">

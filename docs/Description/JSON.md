@@ -2,7 +2,7 @@
 
 ## Warum JSON
 
-Wir haben uns für die Verwendung der JavaScript Object Notation (JSON) entschieden, da sie heutzutage zu den etablierten Standards gehört. Ihre Beliebtheit gründet sich auf mehreren Gründen: Zum einen ist sie als Mensch leicht zu lesen und einfach zu erstellen. Dies macht die Arbeit mit ihr besonders angenehm und effizient. Zum anderen ist JSON im Web-Bereich äußerst leicht zu übertragen, was sie zur perfekten Wahl für den Austausch von Daten zwischen verschiedenen Systemen und Plattformen macht. Durch ihre weit verbreitete Unterstützung in modernen Programmiersprachen und Technologien ist sie ein zuverlässiges Werkzeug für Entwickler und ermöglicht eine reibungslose Integration in vielfältige Anwendungen. 
+Wir haben uns für die Verwendung der JavaScript Object Notation (JSON) entschieden, da sie heutzutage zu den etablierten Standards gehört. Ihre Beliebtheit gründet sich auf mehreren Gründen: Zum einen ist sie als Mensch leicht zu lesen und einfach zu erstellen. Dies macht die Arbeit mit ihr besonders angenehm und effizient. Zum anderen ist JSON im Web-Bereich stark vertreten, was sie zur perfekten Wahl für den Austausch von Daten zwischen verschiedenen Systemen macht. 
 
 ## JSON Handler Klasse
 

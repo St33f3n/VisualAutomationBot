@@ -17,7 +17,10 @@
 
 ### Datenspeicherung und Benutzeroberfläche
 #### [JSON - Permanente Daten](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/JSON.md)
-#### Benutzeroberfläche
+- Warum JSON?
+- JSON Handler Klasse
+- Skalierbarkeit in der Zukunft
+#### [Benutzeroberfläche](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Description/Benutzeroberfl%C3%A4che.md)
 ##### Hauptmenü
 ##### Screenshot-Tool
 ##### Playset-Builder

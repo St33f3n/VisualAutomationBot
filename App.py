@@ -3,7 +3,7 @@ from PyQt5.QtWidgets import QApplication, QFileDialog, QPushButton, QListWidgetI
 from PyQt5.QtCore import Qt, QMimeData, QObject, pyqtSignal, pyqtSlot, QThread
 from PyQt5.QtGui import QDrag, QDragEnterEvent, QDropEvent, QPixmap, QIcon
 import pyautogui
-from app.hello import Ui_MainWindow  # Import Ui_MainWindow from the generated module
+from app.hello import Ui_MainWindow  
 import sys, os
 from lib.commander import Commander
 from lib.gamer import Gamer
