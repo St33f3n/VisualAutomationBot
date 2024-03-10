@@ -27,7 +27,6 @@
 ![create](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Bilder/createMenu.png)
 ##### Playset-Builder
 ![builder](https://github.com/St33f3n/VisualAutomationBot/blob/master/docs/Bilder/builderMenu.png)
-docs/Bilder/builderMenu.png
 
 ### Deployment
 #### Pyenv
