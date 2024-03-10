@@ -14,7 +14,7 @@
 	 [[Funktionsweise und Logik#Erweiterte Logik|Erweiterte Logik]]
 	 [[Funktionsweise und Logik#Image Recognition Algorythm - IRA|Image Recognition Algorythm]]
 ### Datenspeicherung und Benutzeroberfläche
-#### JSON - Permanente Daten
+#### [[JSON]]
 #### Benutzeroberfläche
 ##### Hauptmenü
 ##### Screenshot-Tool
