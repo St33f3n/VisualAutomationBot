@@ -43,7 +43,7 @@ class Commander():
         self.gamers.update({newGame.name:newGame})
 
     def queueGamer(self, key):
-        """🧑‍🤝‍🧑 Add a game instance to the game queue."""
+        """ Add a game instance to the game queue."""
         self.gameQueue.put(self.gamers.get(key))
         self.queueLength = self.gameQueue.qsize()
 
@@ -96,7 +96,7 @@ class Commander():
         while not key  & self.queueLength != 0:
             print("Ending Loop!")
             print(f"Finishing Tasks: {self.gameQueue}")
-            self.playGame()
+
     
     def killBot(self):
         """🔄 Run the game loop."""
