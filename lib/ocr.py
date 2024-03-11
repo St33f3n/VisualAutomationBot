@@ -16,6 +16,6 @@ def Ocr(region):
     """
     img_screenshot = pyautogui.screenshot(region=region)
     # img_screenshot.show()
-    data = pytesseract.image_to_string(img_screenshot, lang='eng',config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789/:.')
+    data = pytesseract.image_to_string(img_screenshot, lang='eng',config='--psm 7 --oem 3 -c tessedit_char_whitelist=0123456789')
 
     return data
