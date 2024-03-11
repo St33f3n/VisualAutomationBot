@@ -212,8 +212,10 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.game_thread = threading.Thread(target=self.com.gameLoop)
             self.game_thread.start()
         else:
-            self.game_thread = threading.Thread(target=self.com.gameLoop)
-            self.stop_event.set()
+            self.stop_event.set()  # Set the event to signal the thread to stop
+            self.game_thread.join()  # Wait for the thread to complete
+            self.game_thread = threading.Thread(target=self.gameLoop)
+            self.game_thread.start()
 
     def stop_game_loop(self):
         # self.com.gameLoop(False)
