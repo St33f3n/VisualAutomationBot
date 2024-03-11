@@ -21,7 +21,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.jHandler = None
         self.stop_event = threading.Event()
         self.com = Commander(self.stop_event)
-
+        self.game_thread = None
 
         self.create_folder_name = None
         self.create_img = None
@@ -208,7 +208,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def start_game_loop(self):
         # self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
-        if self.game_thread != None:
+        if self.game_thread == None:
             self.game_thread = threading.Thread(target=self.com.gameLoop)
             self.game_thread.start()
         else:
