@@ -15,6 +15,9 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
     def __init__(self, parent=None):
         super(App, self).__init__(parent)
         self.setupUi(self)
+
+        self.setWindowIcon(QIcon('icon.png'))
+
         self.jHandler = None
         self.com = Commander()
 
