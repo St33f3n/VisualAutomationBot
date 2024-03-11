@@ -19,7 +19,8 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.setWindowIcon(QIcon('docs\Bilder\VisualAutomationBot.png'))
 
         self.jHandler = None
-        self.com = Commander()
+        self.stop_event = threading.Event()
+        self.com = Commander(self.stop_event)
 
 
         self.create_folder_name = None
@@ -206,11 +207,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.killButton.setEnabled(True)
 
     def start_game_loop(self):
-        self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+        # self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
+        self.game_thread = threading.Thread(target=self.com.gameLoop)
         self.game_thread.start()
 
     def stop_game_loop(self):
-        self.com.gameLoop(False)
+        # self.com.gameLoop(False)
+        self.stop_event.set() 
        
 
     def start_stop(self):

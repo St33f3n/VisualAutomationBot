@@ -14,10 +14,11 @@ class Commander():
         gameQueue (Queue): A queue for game instances.
         queueLength (int): The current length of the game queue.
     """
-    def __init__(self):
+    def __init__(self, stop_event):
         self.gamers = {}
         self.gameQueue = queue.Queue(maxsize = 10)
         self.queueLength = self.gameQueue.qsize()
+        self.stop_event = stop_event
 
     def __str__(self):
         """📜 Returns a string representation of the Commander."""
@@ -87,15 +88,15 @@ class Commander():
     def getGamer(self):
         pass
 
-    def gameLoop(self, key):
+    def gameLoop(self):
         """🔄 Run the game loop."""
-        while key:
+        while self.stop_event.is_set():
             print("Scanning for new Tasks.")
             self.scanTasks()
             self.playGame()
         while self.queueLength != 0:
             self.playGame()
-        if not key:
+        if not self.stop_event.is_set():
             print("Ending Loop!")
             print(f"Finishing Tasks: {self.gameQueue}")
                 
