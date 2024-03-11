@@ -207,15 +207,13 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.killButton.setEnabled(True)
 
     def start_game_loop(self):
-        # self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
         if self.game_thread == None:
             self.game_thread = threading.Thread(target=self.com.gameLoop)
             self.game_thread.start()
         else:
-            self.stop_event.set()  # Set the event to signal the thread to stop
+            self.stop_event.set() 
 
     def stop_game_loop(self):
-        # self.com.gameLoop(False)
         self.stop_event.set() 
        
 
