@@ -89,9 +89,11 @@ class Commander():
 
     def gameLoop(self, key):
         """🔄 Run the game loop."""
-        while key or self.queueLength != 0:
+        while key:
             print("Scanning for new Tasks.")
             self.scanTasks()
+            self.playGame()
+        while self.queueLength != 0:
             self.playGame()
         if not key:
             print("Ending Loop!")
