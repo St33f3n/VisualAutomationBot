@@ -96,14 +96,12 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
                 for i in range(1, len(sublist)):
                     sublist[i] = f"\"{sublist[i]}\""
 
-
         if self.comboBoxselected_item == "playset":
             data = {'playset': arr}
             self.jHandler.add(data)
             self.jHandler.saveData()
             self.saveButton.setText("Saved")
             return
-
 
         if self.comboBoxselected_item == "Add new Actionset":
             key = self.newSaveTextBox.text()
@@ -120,8 +118,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             self.newSaveTextBox.clear()
         else:
             aset, key = self.comboBoxselected_item.split(" : ")
-
-        
         
         result = {key : arr}
         print(result)
@@ -135,7 +131,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         self.functionWidget.addItems(["actionset : " + key for key in actionset_keys])
 
         
-
     def handleComboBoxSelection(self, index):
         self.comboBoxselected_item = self.comboBox.itemText(index)
         self.newSaveTextBox.hide()
@@ -151,7 +146,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
                     item[i] = item[i].replace('"', '')
             self.textlist.addItems(item)
 
-
         if self.comboBoxselected_item in actionset_text:
             key = self.comboBoxselected_item.split(" : ")[1]
             item = sum(self.jHandler.getData('actionset', key ), [])
@@ -163,6 +157,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if self.comboBoxselected_item == "Add new Actionset":
             self.newSaveTextBox.show()
 
+
     def keyPressEvent(self, event):
             if event.key() == Qt.Key_Delete:
                 selected_items = self.textlist.selectedItems()
@@ -173,6 +168,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
             else:
                 super().keyPressEvent(event)
 
+
     def mouseMoveEvent(self, event):
         item = self.functionWidget.itemAt(event.pos())
         if item:
@@ -181,41 +177,6 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         else:
             self.functionWidget.setToolTip("")
 
-    # def dragEnterEvent(self, event):
-    #     event.accept()
-    
-    # def dropEvent(self, event):
-    #     position = event.pos()
-    #     self.ddButton.move(position)
-    #     event.accept()
-    
-    # def add(self):
-    #     selected_item = self.pictureWidget.currentItem()
-    #     if selected_item is not None:
-    #         current_text = self.textlist.text()
-    #         self.textlist.setText(current_text + f"\"{selected_item.text()}\"\n")
-    #     self.pictureWidget.clearSelection()
-    #     self.pictureWidget.setCurrentItem(None)
-
-    # def deleteLast(self):
-    #     current_text = self.textlist.text()
-    #     lines = current_text.splitlines()
-    #     resultText = '\n'.join(lines[:-1])
-    #     self.textlist.setText(resultText + "\n")
-
-
-    # All Gamer Button Functions 
-
-    # def simpleClick(self):
-    #     current_text = self.textlist.text()
-    #     if self.xLabel.text() != "" and self.yLabel.text() != "":
-    #         self.textlist.setText(current_text + f"simpleClick\n {self.xLabel.text()}\n {self.yLabel.text()}\n")
-    #         self.xLabel.setText("")
-    #         self.yLabel.setText("")
-
-    # def clickOnPicture(self):
-    #     current_text = self.textlist.text()
-    #     self.textlist.setText(current_text + "clickOnPicture\n")
 
     # Listen on Keypress and add 
     def keyPress(self):
@@ -223,6 +184,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
         if current_text != "":
             self.textlist.addItems([current_text])
             self.valueTextBox.setText("")
+
 
     # Play 
 
