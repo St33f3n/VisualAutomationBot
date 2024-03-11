@@ -137,14 +137,15 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
         self.textlist.clear()
 
-        actionset_keys = self.jHandler.getData('actionset').keys()
-        actionset_text = ["actionset : " + key for key in actionset_keys]
         if self.comboBoxselected_item == "playset":
             item = sum(self.jHandler.getData('playset'), [])
             for i in range(len(item)):
                 if isinstance(item[i], str):
                     item[i] = item[i].replace('"', '')
             self.textlist.addItems(item)
+
+        actionset_keys = self.jHandler.getData('actionset').keys()
+        actionset_text = ["actionset : " + key for key in actionset_keys]
 
         if self.comboBoxselected_item in actionset_text:
             key = self.comboBoxselected_item.split(" : ")[1]

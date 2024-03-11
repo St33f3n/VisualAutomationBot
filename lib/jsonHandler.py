@@ -79,20 +79,6 @@ class JsonHandler():
             return {name : {'value' : value, 'position' : {'x' : x,'y' : y}}}
 
 
-    def create_playsetData(name, arg1, arg2, argN):
-        """
-        Creates playset data.
-
-        Args:
-            name (str): The name of the playset.
-            arg1, arg2, argN: The arguments for the playset.
-
-        Returns:
-            dict: The playset data.
-        """
-        return {'name': name, 'arg1': arg1, 'arg2' : arg2, 'argN' : argN}
-
-
     def saveNewPicture(self, name, img : Image, path, windowSize, screenSize):
         """
         Saves a new picture.
