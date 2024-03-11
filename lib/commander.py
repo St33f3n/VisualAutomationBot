@@ -93,10 +93,10 @@ class Commander():
             print("Scanning for new Tasks.")
             self.scanTasks()
             self.playGame()
-        while not key  & self.queueLength != 0:
-            print("Ending Loop!")
-            print(f"Finishing Tasks: {self.gameQueue}")
-
+            if not key  & self.queueLength != 0:
+                print("Ending Loop!")
+                print(f"Finishing Tasks: {self.gameQueue}")
+                
     
     def killBot(self):
         """🔄 Run the game loop."""
