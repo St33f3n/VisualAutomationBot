@@ -208,8 +208,11 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def start_game_loop(self):
         # self.game_thread = threading.Thread(target=self.com.gameLoop, args=(True,))
-        self.game_thread = threading.Thread(target=self.com.gameLoop)
-        self.game_thread.start()
+        if self.game_thread != None:
+            self.game_thread = threading.Thread(target=self.com.gameLoop)
+            self.game_thread.start()
+        else:
+            self.stop_event.set()
 
     def stop_game_loop(self):
         # self.com.gameLoop(False)
