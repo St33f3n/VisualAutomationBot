@@ -90,15 +90,15 @@ class Commander():
 
     def gameLoop(self):
         """🔄 Run the game loop."""
-        while self.stop_event.is_set():
+        while not self.stop_event.is_set():
             print("Scanning for new Tasks.")
             self.scanTasks()
             self.playGame()
         while self.queueLength != 0:
             self.playGame()
-        if not self.stop_event.is_set():
-            print("Ending Loop!")
-            print(f"Finishing Tasks: {self.gameQueue}")
+            
+        print("Ending Loop!")
+        print(f"Finishing Tasks: {self.gameQueue}")
                 
     
     def killBot(self):
