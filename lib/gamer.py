@@ -181,8 +181,6 @@ class Gamer():
             print( type(region), region)
             value = Ocr(region)
             print("Value", value)
-            # newInp = JsonHandler.create_ressourceData(key, value, sizeX, sizeY)
-            # print(newInp)
             self.json_handler.valueUpdate("ressource" , (key, value))
 
     def wait(self, key):
