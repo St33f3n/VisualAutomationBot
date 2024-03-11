@@ -16,4 +16,4 @@ Insgesamt ermöglicht die JsonHandler-Klasse eine nahtlose Integration von JSON 
 
 ## Skalierbarkeit in der Zukunft
 
-Durch wenige Anpassungen ist es möglich, die Klasse so zu erweitern, dass sie nicht mehr ausschließlich Daten aus einer Datei liest, sondern auch über eine Web-API abruft. Diese Web-API kann leicht mit Python Flask erstellt und als Backend genutzt werden. Die Daten werden dann in einer Datenbank gespeichert und können über die API abgerufen werden.
+Durch wenige Anpassungen ist es möglich, die Klasse so zu erweitern, dass sie nicht mehr ausschließlich Daten aus einer Datei liest, sondern auch über eine Web-API abruft.
