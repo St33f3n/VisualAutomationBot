@@ -210,8 +210,7 @@ class App(QtWidgets.QMainWindow, Ui_MainWindow):
 
     def stop_game_loop(self):
         self.com.gameLoop(False)
-        if self.game_thread and self.game_thread.is_alive():
-            self.game_thread.join()
+       
 
     def start_stop(self):
         if self.start_stopButton.isChecked():
