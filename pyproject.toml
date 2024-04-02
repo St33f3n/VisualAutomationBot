@@ -1,0 +1,25 @@
+[tool.poetry]
+name = "visualautomationbot"
+version = "0.1.0"
+description = "A automated bot to click arround your screen to emultate you."
+authors = ["Stefan Simmeth <stefan.simmeth@protonmail.com>"]
+license = "GPL-3.0"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+pillow = "^10.2.0"
+PyAutoGUI = "^0.9.54"
+numpy = "^1.26.4"
+pytesseract = "^0.3.10"
+PyQt5 = "^5.15.10"
+keyboard = "^0.13.5"
+opencv-python = "^4.9.0.80"
+PyQt6 = "^6.6.1"
+psycopg2 = "^2.9.9"
+Flask = "^3.0.2"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
